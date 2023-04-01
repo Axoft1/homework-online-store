@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/homework-online-store/static/css/main.7994aadb.css",
+    "main.js": "/homework-online-store/static/js/main.e3e17fc2.js",
+    "static/media/sultan_white.svg": "/homework-online-store/static/media/sultan_white.27d3c570b5873225b40b64f542469736.svg",
+    "static/media/simple-basket.svg": "/homework-online-store/static/media/simple-basket.eb4a2fa86a7215d9f0018fedab6252a6.svg",
+    "static/media/basket.svg": "/homework-online-store/static/media/basket.a5d100d0100f4885c179d9d923ea75eb.svg",
+    "static/media/delete.svg": "/homework-online-store/static/media/delete.52dd0ca00a7578f6d0c562e69a5e8080.svg",
+    "static/media/ci_share.svg": "/homework-online-store/static/media/ci_share.d1b3e351604b6cc07ef647a5bff24f77.svg",
+    "static/media/close-outline.svg": "/homework-online-store/static/media/close-outline.ba6fc45b1c4861388bc548a5aac3811e.svg",
+    "static/media/mail.svg": "/homework-online-store/static/media/mail.3340915fd443967adca6bd4a1fe514ba.svg",
+    "static/media/bottle.svg": "/homework-online-store/static/media/bottle.1d89b88972008994a3447316ff3cc3e9.svg",
+    "static/media/phone-white.svg": "/homework-online-store/static/media/phone-white.4fdc816fceed208c6b26f9df541b1555.svg",
+    "static/media/box-open.svg": "/homework-online-store/static/media/box-open.714f17c0c1a493e158b173f58779cd0a.svg",
+    "static/media/phone-black.svg": "/homework-online-store/static/media/phone-black.d6f82783198a07c85fbb207222e7db17.svg",
+    "static/media/pin.svg": "/homework-online-store/static/media/pin.ac8d5a925aa65f28f8c1f78a97674963.svg",
+    "static/media/catalog_icon2.svg": "/homework-online-store/static/media/catalog_icon2.1928cbd9b07950bf3fa58978c02fd5d0.svg",
+    "static/media/catalog_icon.svg": "/homework-online-store/static/media/catalog_icon.4756189f8fb2f4cdf0b38c581c7033d8.svg",
+    "index.html": "/homework-online-store/index.html",
+    "static/media/icon_search-mobile.svg": "/homework-online-store/static/media/icon_search-mobile.2e7579ec4d7e4d74ea02293861076152.svg",
+    "static/media/search.svg": "/homework-online-store/static/media/search.dc220b85ec983988f6f2629d99ba20b8.svg",
+    "static/media/double-check.svg": "/homework-online-store/static/media/double-check.37f3bc180890ba89fe771c62d8d15901.svg",
+    "static/media/dashicons_menu-x.svg": "/homework-online-store/static/media/dashicons_menu-x.c19f573b2af452b55dcb93f02879ca3a.svg",
+    "static/media/dashicons_menu-alt.svg": "/homework-online-store/static/media/dashicons_menu-alt.0480c82a6509521d232591c92c310877.svg",
+    "static/media/bx_bxs-download.svg": "/homework-online-store/static/media/bx_bxs-download.328b8a0054f394fba0bd4e0a04124692.svg",
+    "static/media/price_icon.svg": "/homework-online-store/static/media/price_icon.5e96ff0389bda2c469106116f0a58afd.svg",
+    "static/media/left.svg": "/homework-online-store/static/media/left.8009929457bde0328f8f182170fd2c0f.svg",
+    "static/media/rigth.svg": "/homework-online-store/static/media/rigth.93ba4abe5846a231d455ec0417dd0a4b.svg",
+    "static/media/arrow-right-white.svg": "/homework-online-store/static/media/arrow-right-white.35ab94e2f8817f324bd31c2293385fa8.svg",
+    "static/media/rolling.svg": "/homework-online-store/static/media/rolling.260e242d67fc23d29ab014c3406116d8.svg",
+    "static/media/cursor-product-up.svg": "/homework-online-store/static/media/cursor-product-up.5e5d30daddeae7614a94f9346edb1e23.svg",
+    "static/media/cursor-product-down.svg": "/homework-online-store/static/media/cursor-product-down.45a32fae8b5b9261ce844d09f39ae9e3.svg",
+    "static/media/cursor-down.svg": "/homework-online-store/static/media/cursor-down.90a0847e2609fe35eb180fd09df108b9.svg",
+    "static/media/cursor-left.svg": "/homework-online-store/static/media/cursor-left.5a3ebbf524233ddda3e33d65833a2922.svg",
+    "static/media/cursor-up.svg": "/homework-online-store/static/media/cursor-up.80566af4e2a61f1f1d7b01637e2cc31d.svg",
+    "main.7994aadb.css.map": "/homework-online-store/static/css/main.7994aadb.css.map",
+    "main.e3e17fc2.js.map": "/homework-online-store/static/js/main.e3e17fc2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7994aadb.css",
+    "static/js/main.e3e17fc2.js"
+  ]
+}
