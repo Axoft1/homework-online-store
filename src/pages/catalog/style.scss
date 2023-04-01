@@ -1,0 +1,33 @@
+.catalog {
+  margin-bottom: 70px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+  &__buttonsFilter {
+    display: flex;
+    justify-content: space-between;
+    gap: calc(1px + (10 - 5) * ((100vw - 320px) / (1370 - 320)));
+    margin-top: 25px;
+  }
+  &__body {
+    display: flex;
+    margin-top: 50px;
+    // border: solid;
+  }
+}
+.dropDownListMobile {
+  display: none;
+}
+.catalog__buttonsFilter-param {
+  display: none;
+}

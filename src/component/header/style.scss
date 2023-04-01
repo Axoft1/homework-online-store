@@ -1,0 +1,229 @@
+.border {
+  border-bottom: 1px solid #3f4e6562;
+  display: block;
+}
+
+
+
+.header {  
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  align-items: center;
+  background: #ffffff;
+
+  &__burger {
+    display: none;
+  }
+  &__contacts {
+    display: flex;
+    gap: calc(5px + (25 - 5) * ((100vw - 320px) / (1370 - 320)));
+
+    &_item {
+      display: flex;
+      gap: calc(5px + (15 - 5) * ((100vw - 320px) / (1370 - 320)));
+      max-width: 275px;
+      img {
+        align-items: center;
+        width: 20px;
+      }
+      h3 {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        color: var(--black);
+      }
+      p {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 130.02%;
+        color: var(--gray);
+      }
+    }
+  }
+  &__nav {
+    display: flex;
+  }
+  &__nav_ul {
+    gap: calc(5px + (30 - 5) * ((100vw - 320px) / (1370 - 320)));
+    display: flex;
+    text-decoration: none;
+    margin: 0;
+    a {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      color: var(--gray);
+      align-items: center;
+      transition: all 0.6s;
+    }
+    a:hover {
+      transition: all 0.4s;
+      color: #00000080;
+  
+    }
+    li {
+      margin: auto;
+    }
+  }
+  &__basket_icon-mobile {
+    display: none;
+  }
+  &__menu {
+    border: solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: calc(5px + (10 - 5) * ((100vw - 320px) / (1370 - 320)));
+  }
+  &__contact {
+    display: flex;
+    align-items: center;
+    &_info {
+      text-align: right;
+      line-height: 150%;
+    }
+    &_info-tel {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--black);
+    }
+    &_info-text {
+      font-weight: 300;
+      font-size: 12px;
+      color: var(--gray);
+    }
+    &_info-call {
+      font-weight: 400;
+      font-size: 10px;
+      color: var(--gray);
+    }
+  }
+  &__basket {
+    display: flex;
+    &_icon {
+      display: flex;
+    }
+    &_quantity {
+      position: relative;
+      right: 15px;
+      width: 25px;
+      height: 25px;
+      background: #ffc85e;
+      border-radius: 50%;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 23px;
+      text-align: center;
+      border: 3px solid #ffffff;
+    }
+  }
+  &__simpleBreadcrumbs {
+    margin-top: 45px;
+  }
+}
+
+//**  HEADER MOBILE  **//
+
+.header__btnCatalog-mobile {
+  display: none;
+  color: var(--black);
+
+  .Button_button__BIpHk {
+    color: #000;
+    padding: 10px 0px;
+    background: #ffffff;
+    border-radius: 0px;
+    p {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #3f4e65;
+      order: 1;
+      margin-left: 10px;
+    }
+  }
+  .button {
+    padding: 0;
+  }
+}
+.header__basket-mobile{
+  display: none;
+}
+.header__logo-mobile {
+  display: none;
+  transition: all 1s ease-out;
+}
+.header__navigateButton {
+  display: none;
+}
+.border-mobile {
+  height: 30px;
+  display: none;
+  opacity: 0.1;
+  border: 1px dashed #3f4e65;
+}
+@keyframes menuHeader {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  } 
+}
+
+.headerMobile {
+
+  animation: menuHeader 0.6s;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  transition-property: 1s;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px 11% 30px 11%;
+    background: #ffffff;
+    opacity: 1;
+  }
+  &__contacts_call {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    text-decoration-line: underline;
+    color: #3f4e65;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    &_h3 {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 150%;
+      color: #3f4e65;
+    }
+    &_ul {
+      li {
+        margin-bottom: 10px;
+        a {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 150%;
+          color: #3f4e65;
+        }
+        a:hover {
+          color: #3f4e659c;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.footer {
+  flex: 0 0 auto;
+  background: #3f4e65;
+  box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+  padding: 70px 0;
+  &__body {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 150%;
+    }
+  }
+  &__mailink {
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  &__logo {
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
+  &__logo-priceList {
+    margin-bottom: 15px;
+  }
+  &__search {
+    p {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 150%;
+      margin-bottom: 14px;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__navList {
+    display: flex;
+    width: 400px;
+    gap: 5%;
+    justify-content: space-between;
+  }
+  &__nav {
+    max-width: 250px;
+    ul {
+      margin-top: 25px;
+      li {
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        margin-top: 20px;
+      }
+    }
+  }
+  &__priceList-contacts {
+    display: flex;
+    width: 480px;
+    gap: 10%;
+  }
+  &__priceList-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h3 {
+      margin-bottom: 5px;
+    }
+  }
+  &__priceList-social {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    img {
+      cursor: pointer;
+    }
+  }
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  &__contacts-call {
+    p {
+      margin: 5px 0;
+    }
+    a {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #ffffffb6;
+    }
+  }
+  &__payCards {
+    display: flex;
+    gap: 5px;
+  }
+}
+.footer__logo-priceList-btn {
+  display: none;
+}

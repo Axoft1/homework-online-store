@@ -1,0 +1,16 @@
+.basketList {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  &__order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__price {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 130%;
+    color: var(--black);
+  }
+}

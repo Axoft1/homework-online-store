@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  padding: 17px;
+  transition: all 0.2s;
+  border-radius: 50px;
+  background: #ffc85e;
+  &__img {
+    border: solid;
+    max-width: 100%;
+    max-height: 100%;
+    align-self: center;
+  }
+}
+.pading{
+    padding: 17px 40px;
+}
+.img{
+  padding: 110px;
+}
