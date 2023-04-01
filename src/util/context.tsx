@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { ICatalog } from "../models/ICatalog";
+import catalogJson from "../api/catalog.json";
 
 export interface AContext {
   addCatalogAdmin?: (product: ICatalog) => void;
@@ -39,7 +40,7 @@ export const Context = (props: ContextProps) => {
     let check = catalogAdmin.findIndex(
       (item) => item.barcode === product.barcode
     );
-    if (check >= 0) {      
+    if (check >= 0) {
       return;
     }
     setCatalogAdmin((basket): ICatalog[] => [
@@ -80,7 +81,6 @@ export const Context = (props: ContextProps) => {
   };
 
   const removeBasket = (id: number) => {
-    
     let check = basket.find((item) => item.id === id);
     if (check?.count === 1) {
       setBasket((prev) => prev.filter((item) => item.id !== id));
@@ -98,26 +98,25 @@ export const Context = (props: ContextProps) => {
   const deletBasket = (id: number) => {
     setBasket((prev) => prev.filter((item) => item.id !== id));
   };
+  console.log(catalogJson);
 
   useEffect(() => {
-    
-      if (localStorage.getItem("catalogAdmin")?.length! >10) {
-        setCatalog(JSON.parse(localStorage.getItem("catalogAdmin")!));
-        setLoading(false);
-      } 
-      else {
-        try {
-          
-          fetch("/catalog.json")
-            .then((response) => response.json())
-            .then((data) => {
-              setCatalog(data);
-              setLoading(false);
-            });
-        } catch (error) {
-          console.error("Ошибка:", error);
-        }
-      }
+    if (localStorage.getItem("catalogAdmin")?.length! > 10) {
+      setCatalog(JSON.parse(localStorage.getItem("catalogAdmin")!));
+      setLoading(false);
+    } else {
+      setCatalog(catalogJson as ICatalog[]);
+      setLoading(false);
+      // try {
+      //   fetch({ catalogJson })
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       setLoading(false);
+      //     });
+      // } catch (error) {
+      //   console.error("Ошибка:", error);
+      // }
+    }
   }, []);
 
   useEffect(() => {
@@ -127,7 +126,6 @@ export const Context = (props: ContextProps) => {
     if (typeof localStorage.getItem("catalogAdmin")) {
       setCatalogAdmin(JSON.parse(localStorage.getItem("catalogAdmin")!));
     }
-    
   }, []);
 
   useEffect(() => {

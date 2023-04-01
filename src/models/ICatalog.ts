@@ -1,15 +1,15 @@
 export enum typeOfCare {
-  body="body", 
-  hands="hands",
-  legs="legs",
-  face="face",
-  paper="paper",
-  hygiene="hygiene",
-  tanning="tanning",
-  set="set",
-  hair="hair",
-  mouth="mouth",
-  shaving="shaving",
+  body = "body",
+  hands = "hands",
+  legs = "legs",
+  face = "face",
+  paper = "paper",
+  hygiene = "hygiene",
+  tanning = "tanning",
+  set = "set",
+  hair = "hair",
+  mouth = "mouth",
+  shaving = "shaving",
 }
 export type CareCategories =
   | "body"
@@ -20,9 +20,9 @@ export type CareCategories =
   | "hygiene"
   | "tanning"
   | "set"
-  |"hair"
-  |"mouth"
-  |"shaving";
+  | "hair"
+  | "mouth"
+  | "shaving";
 
 export interface ICatalog {
   id: number;
@@ -36,5 +36,5 @@ export interface ICatalog {
   description: string;
   price: number;
   count?: number;
-  type_of_care: CareCategories;
+  type_of_care: any;
 }
