@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import { Button } from "../Button/Button";
+import * as img from "../../img/imges";
 import "./style.scss";
-import doubleCheckIcon from "../../img/icons/double-check.svg";
-import closeOutlineIcon from "../../img/icons/close-outline.svg";
 
 interface BasketEmptyProps {
   show?: boolean;
@@ -23,13 +22,13 @@ const OrderNotification: FC<BasketEmptyProps> = ({ show, setShow }) => {
     >
       <div className="basketEmpty__block">
         <div onClick={() => setShow(false)}>
-          <Button size="img" img={doubleCheckIcon}></Button>
+          <Button size="img" img={img.doubleCheckIcon}></Button>
         </div>
         <img src="double-check" alt="" />
         <h3 className="basketEmpty__title">Спасибо за заказ</h3>
         <p>Наш менеджер свяжется с вами в ближайшее время</p>
         <span className="basketEmpty__close" onClick={() => setShow(false)}>
-          <img src={closeOutlineIcon} alt="" />
+          <img src={img.closeOutlineIcon} alt="" />
         </span>
       </div>
     </div>

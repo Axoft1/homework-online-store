@@ -1,9 +1,8 @@
 import React, { FC } from "react";
-import { PagitationProps } from ".";
-import PaginationItem from "./PaginationItem";
 import styles from "./PaginationItem.module.scss";
-import leftIcon from "../../img/icons/left.svg";
-import rigthIcon from "../../img/icons/rigth.svg";
+import PaginationItem from "./PaginationItem";
+import * as img from "../../img/imges";
+import { PagitationProps } from ".";
 
 const Pagination: FC<PagitationProps> = ({
   productPerPage,
@@ -23,7 +22,7 @@ const Pagination: FC<PagitationProps> = ({
     <>
       <ul className={styles.pagination}>
         <button className={styles.pagination__btn} onClick={() => prevPage()}>
-          <img src={leftIcon} alt="" />
+          <img src={img.leftIcon} alt="" />
         </button>
         {pageNumber.map((number, i) => (
           <PaginationItem
@@ -36,7 +35,7 @@ const Pagination: FC<PagitationProps> = ({
           </PaginationItem>
         ))}
         <button className={styles.pagination__btn} onClick={() => nextPage()}>
-          <img src={rigthIcon} alt="" />
+          <img src={img.rigthIcon} alt="" />
         </button>
       </ul>
     </>

@@ -1,7 +1,7 @@
 import React, { FC, useContext, useState } from "react";
-import { ICatalog } from "../../models/ICatalog";
 import { AContext, CustomContext } from "../../util/context";
 import Pagination from "../pagination/Pagination";
+import { ICatalog } from "../../models/ICatalog";
 import ProductItem from "./ProductItem";
 
 interface CatalogProps {
@@ -21,14 +21,14 @@ const Products: FC<CatalogProps> = ({ catalog }: CatalogProps) => {
     setCurrentPage(pageNumber);
   };
   const nextPage = () => {
-    if (currentPage >= Math.ceil(catalog.length / productPerPage)){
+    if (currentPage >= Math.ceil(catalog.length / productPerPage)) {
       setCurrentPage(1);
-      return
+      return;
     }
-      setCurrentPage(currentPage + 1);
+    setCurrentPage(currentPage + 1);
   };
   const prevPage = () => {
-    if (currentPage < Math.ceil(catalog.length / productPerPage)-1) {
+    if (currentPage < Math.ceil(catalog.length / productPerPage) - 1) {
       setCurrentPage(Math.ceil(catalog.length / productPerPage));
       return;
     }

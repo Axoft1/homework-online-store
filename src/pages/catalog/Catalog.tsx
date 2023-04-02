@@ -5,11 +5,10 @@ import FilterList from "../../component/filterList/FilterList";
 import { AContext, CustomContext } from "../../util/context";
 import Products from "../../component/products/Products";
 import { IFilterForm } from "../../models/IFilterForm";
-import { ICatalog } from "../../models/ICatalog";
-import "./style.scss";
 import { Button } from "../../component/Button/Button";
-import cursorUpIcon from "../../img/icons/cursor-up.svg";
-import cursorDownIcon from "../../img/icons/cursor-down.svg";
+import { ICatalog } from "../../models/ICatalog";
+import * as imgs from "../../img/imges";
+import "./style.scss";
 
 const Catalog: FC = () => {
   const { catalog, buttonMobileFilter, setCatalog, setButtonMobileFilter } =
@@ -110,7 +109,7 @@ const Catalog: FC = () => {
           <Button
             onClick={() => setButtonMobileFilter!(!buttonMobileFilter)}
             size="img"
-            img={buttonMobileFilter ? cursorUpIcon : cursorDownIcon}
+            img={buttonMobileFilter ? imgs.cursorUpIcon : imgs.cursorDownIcon}
           ></Button>
         </div>
         <CategoriesButtons setFilterForm={setFilterForm} />

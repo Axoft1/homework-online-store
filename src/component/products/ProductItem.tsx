@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ICatalog } from "../../models/ICatalog";
 import { AContext, CustomContext } from "../../util/context";
+import { ICatalog } from "../../models/ICatalog";
 import { Button } from "../Button/Button";
+import { Link } from "react-router-dom";
+import * as img from "../../img/imges";
 import "./style.scss";
-import boxOpenIcon from "../../img/icons/box-open.svg";
-import bottleIcon from "../../img/icons/bottle.svg";
-import simpleBasketIcon from "../../img/icons/simple-basket.svg";
 
 interface IProduct {
   product: ICatalog;
@@ -35,9 +33,9 @@ const ProductItem = (product: IProduct) => {
       <div className="product__cart_body">
         <p className="product__cart_body-type">
           {size_type.includes(" г") ? (
-            <img src={boxOpenIcon} alt="" />
+            <img src={img.boxOpenIcon} alt="" />
           ) : (
-            <img src={bottleIcon} alt="" />
+            <img src={img.bottleIcon} alt="" />
           )}
           {size_type}
         </p>
@@ -66,7 +64,7 @@ const ProductItem = (product: IProduct) => {
             color={buttonDisabled ? "disabled" : "included"}
             onClick={() => addBasket!(product.product)}
             size="sm"
-            img={simpleBasketIcon}
+            img={img.simpleBasketIcon}
           >
             В КОРЗИНУ
           </Button>

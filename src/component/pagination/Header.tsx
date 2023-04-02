@@ -4,9 +4,9 @@ import { AContext, CustomContext } from "../../util/context";
 import { Link, useNavigate } from "react-router-dom";
 import BasketEmpty from "../BasketEmpty/BasketEmpty";
 import AdminPanel from "../AdminPanel/AdminPanel";
+import HeaderMobile from "../header/HeaderMobile";
 import { Button } from "../Button/Button";
 import { Search } from "../Search/Search";
-import HeaderMobile from "./HeaderMobile";
 import * as img from "../../img/imges";
 import "./style.scss";
 

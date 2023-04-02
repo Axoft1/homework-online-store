@@ -1,11 +1,6 @@
 import React, { FC } from "react";
 import { Button } from "../Button/Button";
-import pinIcon from "../../img/icons/pin.svg";
-import mailIcon from "../../img/icons/mail.svg";
-import phoneBlackIcon from "../../img/icons/phone-black.svg";
-import phoneWhiteIcon from "../../img/icons/phone-white.svg";
-import priceIcon from "../../img/icons/price_icon.svg";
-
+import * as img from "../../img/imges";
 interface HeaderMobileProps {
   setShowAdminPanel: (t: boolean) => void;
 }
@@ -15,21 +10,21 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ setShowAdminPanel }) => {
     <div className="headerMobile">
       <div className="headerMobile__body">
         <div className="header__contacts_item">
-          <img src={pinIcon} alt="pin" />
+          <img src={img.pinIcon} alt="pin" />
           <a href="#*">
             <h3>г.Кокчетав, ул.Ж. Ташенова 129Б</h3>
             <p>(Рынок восточный)</p>
           </a>
         </div>
         <div className="header__contacts_item">
-          <img src={mailIcon} alt="mail" />
+          <img src={img.mailIcon} alt="mail" />
           <a href="#*">
             <h3>opt.sultan@mail.ru </h3>
             <p>На связи в любое время</p>
           </a>
         </div>
         <div className="header__contacts_item">
-          <img src={phoneBlackIcon} alt="mail" />
+          <img src={img.phoneBlackIcon} alt="mail" />
           <a href="#*">
             <h3>Отдел продаж</h3>
             <p>+7 (777) 490-00-91</p>
@@ -37,7 +32,7 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ setShowAdminPanel }) => {
           </a>
         </div>
         <div className="headerMobile__contacts_call">
-          <Button size="img" img={phoneWhiteIcon} />
+          <Button size="img" img={img.phoneWhiteIcon} />
           <a href="#">Заказать звонок</a>
         </div>
         <span className="headerMobile__border" />
@@ -62,7 +57,7 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ setShowAdminPanel }) => {
           </ul>
         </nav>
         <div className="footer__priceList-btn">
-          <Button size="b" img={priceIcon}>
+          <Button size="b" img={img.priceIcon}>
             Прайс лист
           </Button>
         </div>

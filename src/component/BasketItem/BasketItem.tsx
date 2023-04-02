@@ -2,11 +2,9 @@ import React, { FC, useContext } from "react";
 import { ICatalog } from "../../models/ICatalog";
 import { AContext, CustomContext } from "../../util/context";
 import { Button } from "../Button/Button";
-import "./style.scss";
 import { Link } from "react-router-dom";
-import boxOpenIcon from "../../img/icons/box-open.svg";
-import bottleIcon from "../../img/icons/bottle.svg";
-import deleteIcon from "../../img/icons/delete.svg";
+import * as img from "../../img/imges";
+import "./style.scss";
 
 interface BasketItemProps {
   props: ICatalog;
@@ -36,9 +34,9 @@ const BasketItem: FC<BasketItemProps> = (props) => {
         <div className="basketItem__body ">
           <p className="basketItem__body-type ">
             {size_type.includes(" г") ? (
-              <img src={boxOpenIcon} alt="" />
+              <img src={img.boxOpenIcon} alt="" />
             ) : (
-              <img src={bottleIcon} alt="" />
+              <img src={img.bottleIcon} alt="" />
             )}
             {size_type}
           </p>
@@ -89,7 +87,7 @@ const BasketItem: FC<BasketItemProps> = (props) => {
             <Button
               onClick={() => deletBasket!(id)}
               size={"img"}
-              img={deleteIcon}
+              img={img.deleteIcon}
             ></Button>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import React, { FC, useContext } from "react";
-import "./style.scss";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import { ICatalog } from "../../models/ICatalog";
-import { categories } from "../categoriesButtons/index";
-import Select from "react-select";
 import { AContext, CustomContext } from "../../util/context";
-import closeOutlineIcon from "../../img/icons/close-outline.svg";
+import { categories } from "../categoriesButtons/index";
+import { ICatalog } from "../../models/ICatalog";
+import * as img from "../../img/imges";
+import Select from "react-select";
+import "./style.scss";
 
 interface BasketEmptyProps {
   show?: boolean;
@@ -57,7 +57,7 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
       <div className="adminPanel__block">
         <h3 className="basketEmpty__title">Админка</h3>
         <div onClick={() => set()} className="basketEmpty__close">
-          <img src={closeOutlineIcon} alt="X" />
+          <img src={img.closeOutlineIcon} alt="X" />
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="formAdminPanel">
           {errors.url && <span>Заполните правильно url товара</span>}

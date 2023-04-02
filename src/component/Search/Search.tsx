@@ -1,6 +1,6 @@
+import * as imgs from "../../img/imges";
 import React, { FC } from "react";
 import "./style.scss";
-import search from "../../img/icons/search.svg";
 
 interface filterProps {
   setValue(e: string): void;
@@ -26,7 +26,7 @@ export const Search: FC<filterProps> = ({
         placeholder={placeholder}
       />
       <button className="search_img">
-        {img ? <img src={img} alt="" /> : <img src={search} alt="" />}
+        {img ? <img src={img} alt="" /> : <img src={imgs.search} alt="" />}
       </button>
     </form>
   );

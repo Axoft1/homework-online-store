@@ -3,13 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../Button/Button";
 import { Search } from "../Search/Search";
 import "./style.scss";
-import arrowRightWhiteIcon from "../../img/icons/arrow-right-white.svg";
-import sultanWhiteIcon from "../../img/icons/sultan_white.svg";
-import telegramIcon from "../../img/icons/telegram.png";
-import priceIcon from "../../img/icons/price_icon.svg";
-import watsapIcon from "../../img/icons/watsap.png";
-import masterIcon from "../../img/icons/Master.png";
-import visaIcon from "../../img/icons/Visa.png";
+import * as img from "../../img/imges";
 
 const Footer: FC = () => {
   const [valueSearch, setValueSearch] = useState("");
@@ -25,10 +19,10 @@ const Footer: FC = () => {
           <div className="footer__logo">
             <div className="footer__logo-priceList">
               <Link to="/catalog">
-                <img src={sultanWhiteIcon} alt="" />
+                <img src={img.sultanWhiteIcon} alt="" />
               </Link>
               <div className="footer__logo-priceList-btn">
-                <Button size="b" img={priceIcon}>
+                <Button size="b" img={img.priceIcon}>
                   Прайс лист
                 </Button>
               </div>
@@ -41,7 +35,7 @@ const Footer: FC = () => {
           <div className="footer__search">
             <p>Подпишись на скидки и акции</p>
             <Search
-              img={arrowRightWhiteIcon}
+              img={img.arrowRightWhiteIcon}
               formSubmit={setSearch}
               value={valueSearch}
               setValue={setValueSearch}
@@ -74,14 +68,14 @@ const Footer: FC = () => {
           <div className="footer__priceList">
             <div className="footer__priceList-btn">
               <h3>Скачать прайс-лист:</h3>
-              <Button size="b" img={priceIcon}>
+              <Button size="b" img={img.priceIcon}>
                 Прайс лист
               </Button>
               <p>Связь в мессенджерах:</p>
             </div>
             <div className="footer__priceList-social">
-              <img src={watsapIcon} alt="" />
-              <img src={telegramIcon} alt="" />
+              <img src={img.watsapIcon} alt="" />
+              <img src={img.telegramIcon} alt="" />
             </div>
           </div>
           <div className="footer__contacts">
@@ -96,8 +90,8 @@ const Footer: FC = () => {
               <p>на связи в любое время</p>
             </div>
             <div className="footer__payCards">
-              <img src={visaIcon} alt="" />
-              <img src={masterIcon} alt="" />
+              <img src={img.visaIcon} alt="" />
+              <img src={img.masterIcon} alt="" />
             </div>
           </div>
         </div>

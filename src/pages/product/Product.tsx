@@ -1,15 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { Button } from "../../component/Button/Button";
 import { AContext, CustomContext } from "../../util/context";
+import { Button } from "../../component/Button/Button";
+import { useLocation } from "react-router-dom";
+import * as imgs from "../../img/imges";
 import "./style.scss";
-import bottleIcon from "../../img/icons/bottle.svg";
-import boxOpenIcon from "../../img/icons/box-open.svg";
-import ciShareIcon from "../../img/icons/ci_share.svg";
-import simpleBasketIcon from "../../img/icons/simple-basket.svg";
-import bxBxsDownloadIcon from "../../img/icons/bx_bxs-download.svg";
-import cursorProductUpIcon from "../../img/icons/cursor-product-up.svg";
-import cursorProductDownIcon from "../../img/icons/cursor-product-down.svg";
 
 const Product = () => {
   const { catalog, removeBasket, appendedBasket, basket, addBasket } =
@@ -54,9 +48,9 @@ const Product = () => {
 
         <p className="productItem__body__type">
           {size_type.includes(" г") ? (
-            <img src={boxOpenIcon} alt="" />
+            <img src={imgs.boxOpenIcon} alt="" />
           ) : (
-            <img src={bottleIcon} alt="" />
+            <img src={imgs.bottleIcon} alt="" />
           )}
           {size_type}
         </p>
@@ -84,7 +78,7 @@ const Product = () => {
               color={buttonDisabled ? "disabled" : "included"}
               onClick={() => addBasket!(product!)}
               size="sm"
-              img={simpleBasketIcon}
+              img={imgs.simpleBasketIcon}
             >
               В КОРЗИНУ
             </Button>
@@ -93,7 +87,7 @@ const Product = () => {
         <div className="productItem__body__priceList">
           <div className="productItem__body__priceList_links">
             <div className="productItem__body__priceList_link">
-              <img src={ciShareIcon} alt="" />
+              <img src={imgs.ciShareIcon} alt="" />
             </div>
             <div className="productItem__body__priceList_link-btnMobile">
               <Button
@@ -102,7 +96,7 @@ const Product = () => {
                 color={buttonDisabled ? "disabled" : "included"}
                 onClick={() => addBasket!(product!)}
                 size="sm"
-                img={simpleBasketIcon}
+                img={imgs.simpleBasketIcon}
               >
                 В КОРЗИНУ
               </Button>
@@ -114,7 +108,7 @@ const Product = () => {
           </div>
           <div className="productItem__body__priceList_download">
             <p>Прайс-лист</p>
-            <img src={bxBxsDownloadIcon} alt="" />
+            <img src={imgs.bxBxsDownloadIcon} alt="" />
           </div>
         </div>
         <div className="productItem__body__basic">
@@ -141,7 +135,9 @@ const Product = () => {
             </p>
             <img
               src={
-                showDescription ? cursorProductUpIcon : cursorProductDownIcon
+                showDescription
+                  ? imgs.cursorProductUpIcon
+                  : imgs.cursorProductDownIcon
               }
               alt=""
             />
@@ -167,7 +163,9 @@ const Product = () => {
             </p>
             <img
               src={
-                showSpecifications ? cursorProductUpIcon : cursorProductDownIcon
+                showSpecifications
+                  ? imgs.cursorProductUpIcon
+                  : imgs.cursorProductDownIcon
               }
               alt=""
             />

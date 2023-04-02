@@ -5,8 +5,7 @@ import { Search } from "../Search/Search";
 import "./style.scss";
 import { IFilterForm } from "../../models/IFilterForm";
 import { AContext, CustomContext } from "../../util/context";
-import rollingIcon from "../../img/icons/rolling.svg";
-import deleteIcon from "../../img/icons/delete.svg";
+import * as img from "../../img/imges";
 
 interface filterProps {
   formSubmit?(e: React.MouseEvent<HTMLDivElement>): void;
@@ -196,7 +195,7 @@ const FilterList: FC<filterProps> = ({
             >
               <p>Показать все</p>
               <img
-                src={rollingIcon}
+                src={img.rollingIcon}
                 alt=""
                 style={{
                   transform: rollingManufacturer ? "rotate(-180deg)" : "",
@@ -237,7 +236,7 @@ const FilterList: FC<filterProps> = ({
             >
               <p> Показать все</p>
               <img
-                src={rollingIcon}
+                src={img.rollingIcon}
                 alt=""
                 style={{ transform: rollingBrand ? "rotate(-180deg)" : "" }}
               />
@@ -251,7 +250,7 @@ const FilterList: FC<filterProps> = ({
           <Button size={"b"} onClick={applyFilter}>
             Показать
           </Button>
-          <Button onClick={setReset} size={"img"} img={deleteIcon}></Button>
+          <Button onClick={setReset} size={"img"} img={img.deleteIcon}></Button>
         </div>
       </div>
       <div className="filterList__item">
