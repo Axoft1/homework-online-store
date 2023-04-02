@@ -38,14 +38,14 @@ const HeaderMobile: FC<HeaderMobileProps> = ({ setShowAdminPanel }) => {
         </div>
         <div className="headerMobile__contacts_call">
           <Button size="img" img={phoneWhiteIcon} />
-          <a href="#*">Заказать звонок</a>
+          <a href="#">Заказать звонок</a>
         </div>
         <span className="headerMobile__border" />
         <nav className="headerMobile__nav">
           <h3 className="headerMobile__nav_h3">Меню сайта:</h3>
           <ul className="headerMobile__nav_ul">
             <li onClick={() => setShowAdminPanel(true)}>
-              <a href="#*">Админ панель</a>
+              <a href="#">Админ панель</a>
             </li>
             <li>
               <a href="#*">О компании</a>

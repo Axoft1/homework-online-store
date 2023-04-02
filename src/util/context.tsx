@@ -10,10 +10,9 @@ export interface AContext {
   appendedBasket?: (id: number) => void;
   removeBasket?: (id: number) => void;
   deletBasket?: (id: number) => void;
-  // eslint-disable-next-line no-empty-pattern
   setCatalog?: ([]) => void;
-  // eslint-disable-next-line no-empty-pattern
   setBasket?: ([]) => void;
+  setAdminPanel?: (t: boolean) => void;
   buttonMobileFilter?: boolean;
   catalogAdmin?: ICatalog[];
   sumProducts?: number;
@@ -36,11 +35,14 @@ export const Context = (props: ContextProps) => {
   const [catalogAdmin, setCatalogAdmin] = useState<ICatalog[]>([]);
   const [buttonMobileFilter, setButtonMobileFilter] = useState<boolean>(false);
 
+  const [adminPanel, setAdminPanel] = useState<boolean>(false);
+
   const addCatalogAdmin = (product: ICatalog) => {
     let check = catalogAdmin.findIndex(
       (item) => item.barcode === product.barcode
     );
     if (check >= 0) {
+      alert("Тавар с таким штрихкодом есть в каталоге");
       return;
     }
     setCatalogAdmin((basket): ICatalog[] => [
@@ -98,7 +100,6 @@ export const Context = (props: ContextProps) => {
   const deletBasket = (id: number) => {
     setBasket((prev) => prev.filter((item) => item.id !== id));
   };
-  console.log(catalogJson);
 
   useEffect(() => {
     if (localStorage.getItem("catalogAdmin")?.length! > 10) {
@@ -107,17 +108,9 @@ export const Context = (props: ContextProps) => {
     } else {
       setCatalog(catalogJson as ICatalog[]);
       setLoading(false);
-      // try {
-      //   fetch({ catalogJson })
-      //     .then((response) => response.json())
-      //     .then((data) => {
-      //       setLoading(false);
-      //     });
-      // } catch (error) {
-      //   console.error("Ошибка:", error);
-      // }
+      setAdminPanel(false);
     }
-  }, []);
+  }, [adminPanel]);
 
   useEffect(() => {
     if (typeof localStorage.getItem("basket")) {
@@ -155,17 +148,16 @@ export const Context = (props: ContextProps) => {
     catalog,
     sumProducts,
     catalogAdmin,
-    // buttonDisabled,
     buttonMobileFilter,
     setBasket,
     addBasket,
     setCatalog,
     deletBasket,
     removeBasket,
+    setAdminPanel,
     appendedBasket,
     addCatalogAdmin,
     deletCatalogAdmin,
-    // setButtonDisabled,
     setButtonMobileFilter,
   };
 

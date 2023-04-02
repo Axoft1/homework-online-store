@@ -215,7 +215,11 @@ const Header: FC = () => {
         <SimpleBreadcrumbs />
       </div>
       <div className="header__navigateButton conteiner">
-        <Button size="img" img={cursorLeft}></Button>
+        <Button
+          onClick={() => navigate(-1)}
+          size="img"
+          img={cursorLeft}
+        ></Button>
         НАЗАД
       </div>
       <BasketEmpty show={showBasket} setShow={setShowBasket} />

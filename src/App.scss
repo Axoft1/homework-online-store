@@ -84,6 +84,11 @@ img {
     .header__contact {
       width: 40%;
     }
+    .header__basket_quantity {
+      width: 65px;
+      margin-right: -15px;
+    }
+
     .header__nav_ul {
       gap: 10px;
     }
@@ -193,6 +198,10 @@ img {
     }
     .header__basket_price {
       display: none;
+    }
+    .header__basket_quantity {
+      width: 25px;
+      margin-right: 0px;
     }
     .header__btnSearch-mobile {
       display: flex;
@@ -396,6 +405,7 @@ img {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 700px;
     }
     .productItem__body {
       display: flex;
@@ -407,6 +417,9 @@ img {
       .productItem__body__basket-price {
         font-size: 16px;
         white-space: nowrap;
+      }
+      .productItem__body__priceList_link-desktop {
+        display: none;
       }
       .productItem__body__priceList {
         display: flex;
@@ -435,6 +448,11 @@ img {
     }
     .footer__mailink {
       max-width: 100%;
+      .footer__logo {
+        p {
+          font-size: 12px;
+        }
+      }
       .footer__logo-priceList {
         display: flex;
         justify-content: space-around;
@@ -464,15 +482,38 @@ img {
     .footer__navList {
       width: 100%;
       justify-content: space-around;
+      li {
+        font-size: 12px;
+      }
+    }
+    .footer__contacts {
+      h3 {
+        font-size: 14px;
+      }
+      p {
+        font-size: 12px;
+      }
+      a {
+        font-size: 10px;
+      }
     }
     .footer__priceList-contacts {
       width: 100%;
       justify-content: space-around;
+      .footer__contacts-call {
+      }
     }
     .footer__priceList {
       order: 1;
       .Button_button__BIpHk {
         display: none;
+      }
+      h3 {
+        display: none;
+      }
+      p {
+        margin-top: 50px;
+        font-size: 14px;
       }
     }
   }

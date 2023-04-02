@@ -3,16 +3,11 @@ import { categories } from ".";
 import { IFilterForm } from "../../models/IFilterForm";
 import { ButtonCategories } from "../ButtonCategories/ButtonCategories";
 
-
 interface CategoriesButtonsProps {
-
   setFilterForm: React.Dispatch<React.SetStateAction<IFilterForm>>;
 }
 
-const CategoriesButtons: FC<CategoriesButtonsProps> = ({
-  setFilterForm,
-}) => {
-
+const CategoriesButtons: FC<CategoriesButtonsProps> = ({ setFilterForm }) => {
   const setCategory = (value: string) => {
     setFilterForm((prevState: IFilterForm) => ({
       ...prevState,
@@ -23,7 +18,10 @@ const CategoriesButtons: FC<CategoriesButtonsProps> = ({
   return (
     <>
       {categories.map((e) => (
-        <ButtonCategories onClick={() => setCategory(e.value)} key={e.value}>
+        <ButtonCategories
+          onClick={() => setCategory(e.value[0])}
+          key={e.value[0]}
+        >
           {e.label}
         </ButtonCategories>
       ))}

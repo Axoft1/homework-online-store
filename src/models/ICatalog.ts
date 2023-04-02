@@ -36,5 +36,5 @@ export interface ICatalog {
   description: string;
   price: number;
   count?: number;
-  type_of_care: any;
+  type_of_care: string[];
 }

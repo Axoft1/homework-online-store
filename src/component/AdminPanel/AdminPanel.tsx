@@ -13,7 +13,7 @@ interface BasketEmptyProps {
 }
 
 const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
-  const { addCatalogAdmin, catalogAdmin, deletCatalogAdmin } =
+  const { addCatalogAdmin, catalogAdmin, deletCatalogAdmin, setAdminPanel } =
     useContext<AContext>(CustomContext);
 
   const {
@@ -24,13 +24,20 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
   } = useForm<ICatalog>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<ICatalog> = (data) => {
-    const r = convertIntObj(data);
-    addCatalogAdmin!(r);
+    const newCatalog = convertIntObj(data);
+    addCatalogAdmin!(newCatalog);
+  };
+
+  const set = () => {
+    setShow(false);
+    if (localStorage.getItem("catalogAdmin")?.length! > 3) {
+      setAdminPanel!(true);
+    } else {
+      setAdminPanel!(false);
+    }
   };
 
   function convertIntObj(obj: any) {
-    console.log(obj);
-
     const res: any = {};
     for (const key in obj) {
       if (key === "id") {
@@ -49,14 +56,13 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
     <div style={{ display: show ? "flex" : "none" }} className="adminPanel">
       <div className="adminPanel__block">
         <h3 className="basketEmpty__title">Админка</h3>
-        <a
-          href="s"
-          onClick={() => setShow(false)}
-          className="basketEmpty__close"
-        >
+        <div onClick={() => set()} className="basketEmpty__close">
           <img src={closeOutlineIcon} alt="X" />
-        </a>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)} className="formAdminPanel">
+          {errors.url && <span>Заполните правильно url товара</span>}
+          {errors.name && <span>Напишите имя товара</span>}
+          {errors.barcode && <span>Только цифры</span>}
           <div className="formAdminPanel__inputs">
             <p>Название</p>
             <input
@@ -165,9 +171,6 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
               {...register("price", { pattern: /^[0-9]+$/ })}
             />
           </div>
-
-          {errors.name && <span>Напишите имя товара</span>}
-          {errors.size_type && <span>Напишите объем товара</span>}
 
           <input type="submit" />
         </form>

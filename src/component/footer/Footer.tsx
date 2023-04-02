@@ -77,7 +77,7 @@ const Footer: FC = () => {
               <Button size="b" img={priceIcon}>
                 Прайс лист
               </Button>
-              <p>Связь в месседжерах:</p>
+              <p>Связь в мессенджерах:</p>
             </div>
             <div className="footer__priceList-social">
               <img src={watsapIcon} alt="" />

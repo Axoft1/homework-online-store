@@ -51,8 +51,6 @@ const FilterList: FC<filterProps> = ({
   };
 
   const setReset = () => {
-    console.log(inputRefBrand);
-
     for (let i = 0; i < inputRefManufacturer.current.length; i++) {
       inputRefManufacturer.current[i].checked = false;
     }
@@ -60,8 +58,6 @@ const FilterList: FC<filterProps> = ({
       inputRefPrice.current[i].value = "";
     }
     for (let i = 0; i < inputRefBrand.current.length; i++) {
-      console.log(inputRefBrand.current[i]);
-
       inputRefBrand.current[i].checked = false;
     }
     setFilterForm!((prevState: IFilterForm) => ({
@@ -260,11 +256,11 @@ const FilterList: FC<filterProps> = ({
       </div>
       <div className="filterList__item">
         <ul>
-          {categories.map((e) => (
-            <div className="filterList__item-ul" key={e.value}>
+          {categories.map((e, i) => (
+            <div className="filterList__item-ul" key={i}>
               <i
                 className="filterList__item-li"
-                onClick={() => setCategory(e.value)}
+                onClick={() => setCategory(e.value[i])}
               >
                 {e.label}
               </i>

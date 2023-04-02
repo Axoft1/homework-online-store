@@ -21,6 +21,7 @@ const Product = () => {
 
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
   const { url, brand, name, size_type, price, id, barcode } = state;
+
   useEffect(() => {
     let t = basket?.find((item) => item.barcode === barcode);
     if (t) {
@@ -76,16 +77,18 @@ const Product = () => {
               +
             </button>
           </div>
-          <Button
-            type="button"
-            disabled={buttonDisabled}
-            color={buttonDisabled ? "disabled" : "included"}
-            onClick={() => addBasket!(product!)}
-            size="sm"
-            img={simpleBasketIcon}
-          >
-            В КОРЗИНУ
-          </Button>
+          <div className="productItem__body__priceList_link-desktop">
+            <Button
+              type="button"
+              disabled={buttonDisabled}
+              color={buttonDisabled ? "disabled" : "included"}
+              onClick={() => addBasket!(product!)}
+              size="sm"
+              img={simpleBasketIcon}
+            >
+              В КОРЗИНУ
+            </Button>
+          </div>
         </div>
         <div className="productItem__body__priceList">
           <div className="productItem__body__priceList_links">
