@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import * as img from "../../img/imges";
+// import * as img from "../../img/imges";
 import "./style.scss";
 interface BasketEmptyProps {
   show?: boolean;
@@ -21,7 +21,7 @@ const BasketEmpty: FC<BasketEmptyProps> = ({ show, setShow }) => {
       <div className="basketEmpty__block">
         <h3 className="basketEmpty__title">Корзина пустая</h3>
         <span className="basketEmpty__close" onClick={() => setShow(false)}>
-          <img src={img.closeOutlineIcon} alt="" />
+          {/* <img src={img.closeOutlineIcon} alt="" /> */}
         </span>
       </div>
     </div>
