@@ -410,6 +410,9 @@
           margin: auto;
           width: 90%;
         }
+        .footer__priceList-btn>button{
+            display: none !important;
+        }
         .footer__logo-priceList-btn {
           display: block;
           .Button_button__gP632 {
@@ -454,8 +457,8 @@
     }
     .footer__priceList {
       order: 1;
-      .Button_button__BIpHk {
-        display: none;
+      .footer__priceList-btn>button{
+          display: none;
       }
       h3 {
         display: none;
@@ -834,14 +837,14 @@
     }
     .footer__priceList {
       order: 1;
-      .Button_button__BIpHk {
-        display: none;
+      .footer__priceList-btn>button{
+          display: none;
       }
       h3 {
         display: none;
       }
       p {
-        margin-top: 50px;
+        padding-top: 50px;
         font-size: 14px;
       }
     }
