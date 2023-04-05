@@ -71,7 +71,7 @@ const Header: FC = () => {
         </div>
         <nav className="header__nav">
           <ul className="header__nav_ul">
-            <li onClick={() => setShowAdminPanel(true)}>
+            <li data-testid="li-admin" onClick={() => setShowAdminPanel(true)}>
               <a href="#*">Админ панель</a>
             </li>
             <li>
@@ -95,6 +95,7 @@ const Header: FC = () => {
         </div>
         <div className="header__basket-mobile">
           <div
+            data-testid="link-to-basket"
             className="header__basket_icon"
             onClick={() => {
               basket?.length ? navigate("/basket") : setShowBasket(true);
@@ -117,14 +118,14 @@ const Header: FC = () => {
           </Link>
         </div>
         <div className="header__btnCatalog-mobile">
-          <Link to="/catalog">
+          <Link to="/catalog" data-testid="linkMobile-to-catalog">
             <Button size="b" img={img.catalogIcon2}>
               Каталог
             </Button>
           </Link>
         </div>
         <div className="header__btnCatalog">
-          <Link to="/catalog">
+          <Link to="/catalog" data-testid="link-to-catalog">
             <Button size="b" img={img.catalogIcon}>
               Каталог
             </Button>

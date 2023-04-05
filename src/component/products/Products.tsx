@@ -40,11 +40,15 @@ const Products: FC<CatalogProps> = ({ catalog }: CatalogProps) => {
   }
 
   return (
-    <section className="product__wrapped">
+    <section className="product__wrapped" data-testid="component-products">
       <div className="product">
         {catalog &&
-          currentProduct.map((product: any) => (
-            <ProductItem product={product} key={product.id} />
+          currentProduct.map((product: ICatalog) => (
+            <ProductItem
+              data-testid="product-cart"
+              product={product}
+              key={product.id}
+            />
           ))}
       </div>
       <div className="paginations">

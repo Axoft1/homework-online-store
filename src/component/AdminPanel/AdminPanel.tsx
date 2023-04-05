@@ -53,7 +53,11 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
   }
 
   return (
-    <div style={{ display: show ? "flex" : "none" }} className="adminPanel">
+    <div
+      data-testid="admin-panel"
+      style={{ display: show ? "flex" : "none" }}
+      className="adminPanel"
+    >
       <div className="adminPanel__block">
         <h3 className="basketEmpty__title">Админка</h3>
         <div onClick={() => set()} className="basketEmpty__close">
@@ -172,12 +176,12 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
             />
           </div>
 
-          <input type="submit" />
+          <input type="submit" data-testid="submit-admin-panel" />
         </form>
         <ul className="adminPanel__ul">
           {catalogAdmin
             ? catalogAdmin.map((e) => (
-                <li key={e.id}>
+                <li key={e.id} data-testid="added-product">
                   {e.name}
                   <button onClick={() => deletCatalogAdmin!(e.id)}>
                     Удалить

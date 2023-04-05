@@ -184,7 +184,7 @@ const FilterList: FC<filterProps> = ({
                   name={e}
                   onChange={(evt) => setManufacturer(evt.target.checked, e)}
                 />
-                <label htmlFor={e}>
+                <label htmlFor={e} data-testid="Check">
                   {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
                 </label>
               </div>

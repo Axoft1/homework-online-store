@@ -14,6 +14,7 @@ const BasketEmpty: FC<BasketEmptyProps> = ({ show, setShow }) => {
   };
   return (
     <div
+      data-testid="basket-empty"
       onClick={(e) => exitBasket(e)}
       style={{ display: show ? "flex" : "none" }}
       className="basketEmpty"

@@ -55,9 +55,9 @@ const Catalog: FC = () => {
     category: "",
   });
 
-  const brand = Array.from(new Set(catalog!.map((e: any) => e.brand)));
+  const brand = Array.from(new Set(catalog?.map((e: any) => e.brand)));
   const manufacturer = Array.from(
-    new Set(catalog!.map((e: any) => e.manufacturer))
+    new Set(catalog?.map((e: any) => e.manufacturer))
   );
 
   const formSubmit = (e: React.FormEvent) => {
@@ -75,7 +75,7 @@ const Catalog: FC = () => {
     catalog: ICatalog[],
     filter: IFilterForm
   ): ICatalog[] => {
-    return catalog
+    return catalog ? catalog
       .filter(
         (item) => item.price >= filter.priceMin && item.price <= filter.priceMax
       )
@@ -86,17 +86,17 @@ const Catalog: FC = () => {
       )
       .filter((item) =>
         filter.brands.length === 0 ? true : filter.brands.includes(item.brand)
-      );
+      ): [];
   };
 
-  const filteredCatalog1 = catalog!.filter((item) =>
+  const filteredCatalog1 = catalog?.filter((item) =>
     hasCategory(item, filterForm.category)
   );
 
-  const filteredCatalog = filterCatalog(filteredCatalog1, applyedFilter);
+  const filteredCatalog = filterCatalog(filteredCatalog1!, applyedFilter);
 
   return (
-    <div className="catalog conteiner">
+    <div className="catalog conteiner" data-testid="catalog-page">
       <div className="catalog__header">
         <h2 className="catalog__title">КОСМЕТИКА И ГИГИЕНА</h2>
         <div className="dropDownListDiscrete">
@@ -128,7 +128,7 @@ const Catalog: FC = () => {
           setApplyedFilter={setApplyedFilter}
           applyFilter={() => setApplyedFilter(filterForm)}
         />
-        <Products catalog={filteredCatalog} />
+        <Products  catalog={filteredCatalog} />
       </div>
     </div>
   );

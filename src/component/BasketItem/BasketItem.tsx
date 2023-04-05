@@ -27,7 +27,7 @@ const BasketItem: FC<BasketItemProps> = (props) => {
     useContext<AContext>(CustomContext);
   return (
     <>
-      <article className="basketItem">
+      <article className="basketItem" data-testid="basket-page">
         <div className="basketItem__img">
           <img src={url} alt="" />
         </div>

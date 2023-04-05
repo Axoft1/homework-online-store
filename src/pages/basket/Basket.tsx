@@ -17,7 +17,7 @@ const Basket: FC = () => {
   };
 
   return (
-    <div className="conteiner">
+    <div className="conteiner" data-testid="basket-page">
       <h2>КОРЗИНА</h2>
       <div className="basketList">
         <span className="basketItem__span" />

@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { AContext, CustomContext } from "../../util/context";
 import { Button } from "../../component/Button/Button";
 import { useLocation } from "react-router-dom";
 import * as imgs from "../../img/imges";
 import "./style.scss";
+import { ICatalog } from "../../models/ICatalog";
 
-const Product = () => {
+const Product:FC = () => {
   const { catalog, removeBasket, appendedBasket, basket, addBasket } =
     useContext<AContext>(CustomContext);
   const { pathname, state } = useLocation();
@@ -14,7 +15,15 @@ const Product = () => {
   const [countProduct, setCountProduct] = useState<number>(1);
 
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
-  const { url, brand, name, size_type, price, id, barcode } = state;
+  const {
+    url,
+    brand,
+    name,
+    size_type,
+    price,
+    id,
+    barcode,
+  }: ICatalog = state || {};
 
   useEffect(() => {
     let t = basket?.find((item) => item.barcode === barcode);
@@ -35,7 +44,7 @@ const Product = () => {
   const product = catalog?.find((item) => item.barcode === pathNameSplit[0]);
 
   return (
-    <article className="productItem conteiner">
+    <article className="productItem conteiner" data-testid="product-item">
       <div className="productItem__img">
         <img src={url} alt="" />
       </div>
@@ -47,7 +56,7 @@ const Product = () => {
         </div>
 
         <p className="productItem__body__type">
-          {size_type.includes(" г") ? (
+          {size_type?.includes(" г") ? (
             <img src={imgs.boxOpenIcon} alt="" />
           ) : (
             <img src={imgs.bottleIcon} alt="" />

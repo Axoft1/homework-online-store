@@ -26,7 +26,7 @@ const ProductItem = (product: IProduct) => {
   }, [basket]);
 
   return (
-    <article className="product__cart">
+    <article className="product__cart" data-testid="product-cart">
       <div className="product__cart_img">
         <img src={url} alt="" />
       </div>
@@ -40,6 +40,7 @@ const ProductItem = (product: IProduct) => {
           {size_type}
         </p>
         <Link
+          data-testid="link-product"
           state={product.product}
           to={`/catalog/${barcode}`}
           className="product__cart_body-name"
@@ -59,6 +60,7 @@ const ProductItem = (product: IProduct) => {
         <div className="product__cart_btn">
           <p className="product__cart_btn-price">{price} &#8376;</p>
           <Button
+            data-testid="in-basket"
             type="button"
             disabled={buttonDisabled}
             color={buttonDisabled ? "disabled" : "included"}

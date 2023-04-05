@@ -11,42 +11,42 @@ import * as img from "../../img/imges";
 import "./style.scss";
 
 const Header: FC = () => {
-  const navigate = useNavigate();
-  const [valueSearch, setValueSearch] = useState<string>("");
-  const [showBasket, setShowBasket] = useState<boolean>(false);
-  const [showAdminPanel, setShowAdminPanel] = useState<boolean>(false);
-  const { basket, sumProducts } = useContext<AContext>(CustomContext);
+  // const navigate = useNavigate();
+  // const [valueSearch, setValueSearch] = useState<string>("");
+  // const [showBasket, setShowBasket] = useState<boolean>(false);
+  // const [showAdminPanel, setShowAdminPanel] = useState<boolean>(false);
+  // const { basket, sumProducts } = useContext<AContext>(CustomContext);
 
-  const [burgerButton, setBurgerButton] = useState<boolean>(false);
-  const [buttonMobileFilter, setButtonMobileFilter] = useState<boolean>(false);
+  // const [burgerButton, setBurgerButton] = useState<boolean>(false);
+  // const [buttonMobileFilter, setButtonMobileFilter] = useState<boolean>(false);
 
-  const [hide, setHide] = useState<boolean>(false);
+  // const [hide, setHide] = useState<boolean>(false);
 
-  let lastScrol = 0;
-  const defaultOffset = 100;
+  // let lastScrol = 0;
+  // const defaultOffset = 100;
 
-  const handleScroll = () => {
-    if (window.scrollY > lastScrol && !hide && window.scrollY > defaultOffset) {
-      setHide(true);
-    } else if (window.scrollY < lastScrol) {
-      setHide(false);
-    }
-    lastScrol = window.scrollY;
-  };
+  // const handleScroll = () => {
+  //   if (window.scrollY > lastScrol && !hide && window.scrollY > defaultOffset) {
+  //     setHide(true);
+  //   } else if (window.scrollY < lastScrol) {
+  //     setHide(false);
+  //   }
+  //   lastScrol = window.scrollY;
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
-  const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    console.log("Search");
-  };
+  // const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   e.preventDefault();
+  //   console.log("Search");
+  // };
 
   return (
-    <div className={hide ? "header__body hide" : "header__body"}>
-      <div className="header conteiner">
+    <div >
+      {/* <div className="header conteiner">
         <div
           className="header__burger"
           onClick={() => setBurgerButton(!burgerButton)}
@@ -205,7 +205,7 @@ const Header: FC = () => {
         НАЗАД
       </div>
       <BasketEmpty show={showBasket} setShow={setShowBasket} />
-      <AdminPanel show={showAdminPanel} setShow={setShowAdminPanel} />
+      <AdminPanel show={showAdminPanel} setShow={setShowAdminPanel} /> */}
     </div>
   );
 };
