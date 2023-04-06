@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/homework-online-store/static/css/main.8fcb128d.css",
-    "main.js": "/homework-online-store/static/js/main.b3ba8b69.js",
+    "main.css": "/homework-online-store/static/css/main.ceb34ab7.css",
+    "main.js": "/homework-online-store/static/js/main.2d6fcd50.js",
     "static/media/sultan_white.svg": "/homework-online-store/static/media/sultan_white.27d3c570b5873225b40b64f542469736.svg",
     "static/media/simple-basket.svg": "/homework-online-store/static/media/simple-basket.eb4a2fa86a7215d9f0018fedab6252a6.svg",
     "static/media/basket.svg": "/homework-online-store/static/media/basket.a5d100d0100f4885c179d9d923ea75eb.svg",
@@ -33,11 +33,11 @@
     "static/media/cursor-down.svg": "/homework-online-store/static/media/cursor-down.90a0847e2609fe35eb180fd09df108b9.svg",
     "static/media/cursor-left.svg": "/homework-online-store/static/media/cursor-left.5a3ebbf524233ddda3e33d65833a2922.svg",
     "static/media/cursor-up.svg": "/homework-online-store/static/media/cursor-up.80566af4e2a61f1f1d7b01637e2cc31d.svg",
-    "main.8fcb128d.css.map": "/homework-online-store/static/css/main.8fcb128d.css.map",
-    "main.b3ba8b69.js.map": "/homework-online-store/static/js/main.b3ba8b69.js.map"
+    "main.ceb34ab7.css.map": "/homework-online-store/static/css/main.ceb34ab7.css.map",
+    "main.2d6fcd50.js.map": "/homework-online-store/static/js/main.2d6fcd50.js.map"
   },
   "entrypoints": [
-    "static/css/main.8fcb128d.css",
-    "static/js/main.b3ba8b69.js"
+    "static/css/main.ceb34ab7.css",
+    "static/js/main.2d6fcd50.js"
   ]
 }
