@@ -9,7 +9,7 @@
   padding: 14px 0;
   align-items: center;
   background: #ffffff;
-
+  gap: 5px;
   &__burger {
     display: none;
   }
@@ -81,6 +81,7 @@
       line-height: 150%;
     }
     &_info-tel {
+      white-space: pre;
       font-weight: 600;
       font-size: 14px;
       color: var(--black);

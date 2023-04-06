@@ -20,6 +20,7 @@ const Products: FC<CatalogProps> = ({ catalog }: CatalogProps) => {
   const pagination = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
   };
+
   const nextPage = () => {
     if (currentPage >= Math.ceil(catalog.length / productPerPage)) {
       setCurrentPage(1);
@@ -52,14 +53,18 @@ const Products: FC<CatalogProps> = ({ catalog }: CatalogProps) => {
           ))}
       </div>
       <div className="paginations">
-        <Pagination
-          productPerPage={productPerPage}
-          totalProduct={catalog.length}
-          currentPage={currentPage}
-          pagination={pagination}
-          nextPage={nextPage}
-          prevPage={prevPage}
-        />
+        {catalog.length < productPerPage ? (
+          ""
+        ) : (
+          <Pagination
+            productPerPage={productPerPage}
+            totalProduct={catalog.length}
+            currentPage={currentPage}
+            pagination={pagination}
+            nextPage={nextPage}
+            prevPage={prevPage}
+          />
+        )}        
       </div>
     </section>
   );
