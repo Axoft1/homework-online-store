@@ -1,4 +1,4 @@
-import { CareCategories, typeOfCare } from "../../models/ICatalog";
+// import { CareCategories, typeOfCare } from "../../models/ICatalog";
 import { IFilterForm } from "../../models/IFilterForm";
 
 export interface CategoriesButtonsProps {

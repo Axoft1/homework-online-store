@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { AContext, CustomContext } from "../../util/context";
 import { ICatalog } from "../../models/ICatalog";
 import { Button } from "../Button/Button";
@@ -10,7 +10,7 @@ interface IProduct {
   product: ICatalog;
 }
 
-const ProductItem = (product: IProduct) => {
+const ProductItem: FC<IProduct> = (product) => {
   const { name, url, brand, barcode, size_type, price, manufacturer } =
     product.product;
 
@@ -31,7 +31,7 @@ const ProductItem = (product: IProduct) => {
         <img src={url} alt="" />
       </div>
       <div className="product__cart_body">
-        <p className="product__cart_body-type">
+        <p data-testid="size_type" className="product__cart_body-type">
           {size_type.includes(" г") ? (
             <img src={img.boxOpenIcon} alt="" />
           ) : (
@@ -48,10 +48,10 @@ const ProductItem = (product: IProduct) => {
           <b>{brand} </b>{" "}
           {name.length >= 50 ? name.slice(0, 50) + " ..." : name}
         </Link>
-        <p className="product__cart_body-text">
+        <p data-testid="barcode" className="product__cart_body-text">
           Штрихкод: <b style={{ color: "#111111" }}>{barcode}</b>
         </p>
-        <p>
+        <p data-testid="manufacturer">
           Производитель: <b style={{ color: "#111111" }}>{manufacturer}</b>
         </p>
         <p>

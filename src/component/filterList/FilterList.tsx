@@ -6,6 +6,8 @@ import "./style.scss";
 import { IFilterForm } from "../../models/IFilterForm";
 import { AContext, CustomContext } from "../../util/context";
 import * as img from "../../img/imges";
+import { ICatalog } from "../../models/ICatalog";
+import { log } from "util";
 
 interface filterProps {
   formSubmit?(e: React.MouseEvent<HTMLDivElement>): void;
@@ -36,17 +38,18 @@ const FilterList: FC<filterProps> = ({
   const inputRefPrice = useRef<HTMLInputElement[]>([]);
 
   if (!rollingBrand) {
-    brand = brand!.filter((e, i) => i < 4);
+    brand = brand && brand.filter((e, i) => i < 4);
   }
   if (!rollingManufacturer) {
-    manufacturer = manufacturer!.filter((e, i) => i < 4);
+    manufacturer = manufacturer && manufacturer.filter((e, i) => i < 4);
   }
   const setMinPrice = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
-    setFilterForm!((prevState) => ({
-      ...prevState,
-      priceMin: Number.parseInt(value, 10),
-    }));
+    setFilterForm &&
+      setFilterForm((prevState) => ({
+        ...prevState,
+        priceMin: Number.parseInt(value, 10),
+      }));
   };
 
   const setReset = () => {
@@ -59,73 +62,83 @@ const FilterList: FC<filterProps> = ({
     for (let i = 0; i < inputRefBrand.current.length; i++) {
       inputRefBrand.current[i].checked = false;
     }
-    setFilterForm!((prevState: IFilterForm) => ({
-      ...prevState,
-      category: "",
-    }));
-    setApplyedFilter!(() => ({
-      brands: [],
-      priceMin: 0,
-      priceMax: 10000,
-      category: "",
-      manufacturers: [],
-    }));
+    setFilterForm &&
+      setFilterForm((prevState: IFilterForm) => ({
+        ...prevState,
+        category: "",
+      }));
+    setApplyedFilter &&
+      setApplyedFilter(() => ({
+        brands: [],
+        priceMin: 0,
+        priceMax: 10000,
+        category: "",
+        manufacturers: [],
+      }));
   };
 
   const setMaxPrice = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
-    setFilterForm!((prevState) => ({
-      ...prevState,
-      priceMax: Number.parseInt(value, 10),
-    }));
+    setFilterForm &&
+      setFilterForm((prevState) => ({
+        ...prevState,
+        priceMax: Number.parseInt(value, 10),
+      }));
   };
 
   const setManufacturer = (evt: boolean, name: string) => {
     if (evt) {
-      setFilterForm!((prevState) => ({
-        ...prevState,
-        manufacturers: [...prevState.manufacturers, name],
-      }));
+      setFilterForm &&
+        setFilterForm((prevState: IFilterForm) => ({
+          ...prevState,
+          manufacturers: [...prevState.manufacturers, name],
+        }));
     } else {
-      setFilterForm!((prevState) => ({
-        ...prevState,
-        manufacturers: prevState.manufacturers.filter(
-          (m: string) => m !== name
-        ),
-      }));
+      setFilterForm &&
+        setFilterForm((prevState: IFilterForm) => ({
+          ...prevState,
+          manufacturers: prevState.manufacturers.filter(
+            (m: string) => m !== name
+          ),
+        }));
     }
   };
   const setBrand = (evt: boolean, name: string) => {
     if (evt) {
-      setFilterForm!((prevState) => ({
-        ...prevState,
-        brands: [...prevState.brands, name],
-      }));
+      setFilterForm &&
+        setFilterForm((prevState: IFilterForm) => ({
+          ...prevState,
+          brands: [...prevState.brands, name],
+        }));
     } else {
-      setFilterForm!((prevState) => ({
-        ...prevState,
-        brands: prevState.brands.filter((m: string) => m !== name),
-      }));
+      setFilterForm &&
+        setFilterForm((prevState: IFilterForm) => ({
+          ...prevState,
+          brands: prevState.brands.filter((m: string) => m !== name),
+        }));
     }
   };
 
   const setCategory = (value: string) => {
-    setFilterForm!((prevState: IFilterForm) => ({
-      ...prevState,
-      category: value,
-    }));
+    console.log(value);
+    
+    setFilterForm &&
+      setFilterForm((prevState: IFilterForm) => ({
+        ...prevState,
+        category: value,
+      }));
   };
 
   const setSearchBrand = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    if (brand!.includes(valueBrand)) {
+    if (brand && brand.includes(valueBrand)) {
       setBrand(true, valueBrand);
       applyFilter!();
     }
   };
   const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    if (manufacturer!.includes(valueManufacturer)) {
+    if (manufacturer && manufacturer.includes(valueManufacturer)) {
       setManufacturer(true, valueManufacturer);
       applyFilter!();
     }
@@ -172,26 +185,27 @@ const FilterList: FC<filterProps> = ({
             value={valueManufacturer}
           />
           <fieldset className="filterList__form__manufacturer_checkbox">
-            {manufacturer!.map((e, i) => (
-              <div key={i}>
-                <input
-                  ref={(element) => {
-                    inputRefManufacturer.current[i] =
-                      element as HTMLInputElement;
-                  }}
-                  type="checkbox"
-                  id={e}
-                  name={e}
-                  onChange={(evt) => setManufacturer(evt.target.checked, e)}
-                />
-                <label htmlFor={e} data-testid="Check">
-                  {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
-                </label>
-              </div>
-            ))}
+            {manufacturer &&
+              manufacturer.map((e, i) => (
+                <div key={i}>
+                  <input
+                    ref={(element) => {
+                      inputRefManufacturer.current[i] =
+                        element as HTMLInputElement;
+                    }}
+                    type="checkbox"
+                    id={e}
+                    name={e}
+                    onChange={(evt) => setManufacturer(evt.target.checked, e)}
+                  />
+                  <label htmlFor={e}>
+                    {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
+                  </label>
+                </div>
+              ))}
             <label
-              className="filterList__form__manufacturer_rolling"
               onClick={() => setRollingManufacturer(!rollingManufacturer)}
+              className="filterList__form__manufacturer_rolling"
             >
               <p>Показать все</p>
               <img
@@ -214,22 +228,23 @@ const FilterList: FC<filterProps> = ({
             value={valueBrand}
           />
           <fieldset className="filterList__form__manufacturer_checkbox">
-            {brand!.map((e, i) => (
-              <div key={i}>
-                <input
-                  ref={(element) => {
-                    inputRefBrand.current[i] = element as HTMLInputElement;
-                  }}
-                  type="checkbox"
-                  id={e}
-                  name={e}
-                  onChange={(evt) => setBrand(evt.target.checked, e)}
-                />
-                <label htmlFor={e}>
-                  {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
-                </label>
-              </div>
-            ))}
+            {brand &&
+              brand.map((e, i) => (
+                <div key={i}>
+                  <input
+                    ref={(element) => {
+                      inputRefBrand.current[i] = element as HTMLInputElement;
+                    }}
+                    type="checkbox"
+                    id={e}
+                    name={e}
+                    onChange={(evt) => setBrand(evt.target.checked, e)}
+                  />
+                  <label htmlFor={e}>
+                    {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
+                  </label>
+                </div>
+              ))}
             <label
               onClick={() => setRollingBrand(!rollingBrand)}
               className="filterList__form__manufacturer_rolling"
@@ -259,7 +274,7 @@ const FilterList: FC<filterProps> = ({
             <div className="filterList__item-ul" key={i}>
               <i
                 className="filterList__item-li"
-                onClick={() => setCategory(e.value[i])}
+                onClick={() => setCategory(e.value[0])}
               >
                 {e.label}
               </i>

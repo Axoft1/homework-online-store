@@ -5,17 +5,19 @@ import App from '../../App';
 import Header from '../header/Header';
 import userEvent from '@testing-library/user-event';
 import Catalog from '../../pages/catalog/Catalog';
+import FilterList from './FilterList';
 
 
-test("submit-admin-panel", async () => {
+test("filter list", async () => {
   render(
     <MemoryRouter>
-      <Catalog />
+      <FilterList  brand={["ARAVIA"]} />
     </MemoryRouter>
   );
   const user = userEvent
-const input = await screen.findAllByTestId("Check")[0];
+  const input = screen.getByText('ARAVIA');
    user.click(input);
-
-  expect(screen.getByLabelText("Check")).toBeChecked();
+  // expect(Promise.resolve(input)).toBeInTheDocument();
+  expect(screen.getByLabelText("ARAVIA")).toBeChecked();
+  //  expect(screen.getByTestId("check")).toBeInTheDocument();
 });
