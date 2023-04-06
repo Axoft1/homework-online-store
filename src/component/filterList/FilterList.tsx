@@ -1,13 +1,13 @@
-import React, { FC, useContext, useRef, useState } from "react";
-import { Button } from "../Button/Button";
-import { categories } from "../categoriesButtons/index";
-import { Search } from "../Search/Search";
-import "./style.scss";
-import { IFilterForm } from "../../models/IFilterForm";
+import React, { FC, useContext, useState } from "react";
 import { AContext, CustomContext } from "../../util/context";
+import { categories } from "../categoriesButtons/index";
+import { IFilterForm } from "../../models/IFilterForm";
+import InputChecked from "./InputChecked";
+import { Search } from "../Search/Search";
+import { Button } from "../Button/Button";
 import * as img from "../../img/imges";
-import { ICatalog } from "../../models/ICatalog";
-import { log } from "util";
+import InputPrice from "./InputPrice";
+import "./style.scss";
 
 interface filterProps {
   formSubmit?(e: React.MouseEvent<HTMLDivElement>): void;
@@ -27,15 +27,12 @@ const FilterList: FC<filterProps> = ({
   setApplyedFilter,
 }) => {
   const [rollingBrand, setRollingBrand] = useState(false);
+  const [resetRef, setResetRef] = useState(false);
   const [rollingManufacturer, setRollingManufacturer] = useState(false);
   const [valueBrand, setValueBrand] = useState("");
   const [valueManufacturer, setValueManufacturer] = useState("");
   const { setButtonMobileFilter, buttonMobileFilter } =
     useContext<AContext>(CustomContext);
-
-  const inputRefBrand = useRef<HTMLInputElement[]>([]);
-  const inputRefManufacturer = useRef<HTMLInputElement[]>([]);
-  const inputRefPrice = useRef<HTMLInputElement[]>([]);
 
   if (!rollingBrand) {
     brand = brand && brand.filter((e, i) => i < 4);
@@ -43,6 +40,7 @@ const FilterList: FC<filterProps> = ({
   if (!rollingManufacturer) {
     manufacturer = manufacturer && manufacturer.filter((e, i) => i < 4);
   }
+
   const setMinPrice = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
     setFilterForm &&
@@ -53,15 +51,7 @@ const FilterList: FC<filterProps> = ({
   };
 
   const setReset = () => {
-    for (let i = 0; i < inputRefManufacturer.current.length; i++) {
-      inputRefManufacturer.current[i].checked = false;
-    }
-    for (let i = 0; i < inputRefPrice.current.length; i++) {
-      inputRefPrice.current[i].value = "";
-    }
-    for (let i = 0; i < inputRefBrand.current.length; i++) {
-      inputRefBrand.current[i].checked = false;
-    }
+    setResetRef(!resetRef);
     setFilterForm &&
       setFilterForm((prevState: IFilterForm) => ({
         ...prevState,
@@ -120,8 +110,6 @@ const FilterList: FC<filterProps> = ({
   };
 
   const setCategory = (value: string) => {
-    console.log(value);
-    
     setFilterForm &&
       setFilterForm((prevState: IFilterForm) => ({
         ...prevState,
@@ -157,23 +145,17 @@ const FilterList: FC<filterProps> = ({
         <div className="filterList__form__price">
           <p>Цена &#8376;</p>
           <div className="filterList__form__price-input">
-            <input
-              ref={(element) => {
-                inputRefPrice.current[0] = element as HTMLInputElement;
-              }}
-              type="number"
+            <InputPrice
               onChange={setMinPrice}
+              resetRef={resetRef}
               placeholder="0"
             />
             -
-            <input
-              ref={(element) => {
-                inputRefPrice.current[1] = element as HTMLInputElement;
-              }}
-              type="number"
+            <InputPrice
               onChange={setMaxPrice}
+              resetRef={resetRef}
               placeholder="10 000"
-            />
+            />          
           </div>
         </div>
         <div className="filterList__form__manufacturer">
@@ -187,21 +169,12 @@ const FilterList: FC<filterProps> = ({
           <fieldset className="filterList__form__manufacturer_checkbox">
             {manufacturer &&
               manufacturer.map((e, i) => (
-                <div key={i}>
-                  <input
-                    ref={(element) => {
-                      inputRefManufacturer.current[i] =
-                        element as HTMLInputElement;
-                    }}
-                    type="checkbox"
-                    id={e}
-                    name={e}
-                    onChange={(evt) => setManufacturer(evt.target.checked, e)}
-                  />
-                  <label htmlFor={e}>
-                    {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
-                  </label>
-                </div>
+                <InputChecked
+                  key={e}
+                  name={e}
+                  setFilter={setManufacturer}
+                  resetRef={resetRef}
+                />
               ))}
             <label
               onClick={() => setRollingManufacturer(!rollingManufacturer)}
@@ -230,20 +203,13 @@ const FilterList: FC<filterProps> = ({
           <fieldset className="filterList__form__manufacturer_checkbox">
             {brand &&
               brand.map((e, i) => (
-                <div key={i}>
-                  <input
-                    ref={(element) => {
-                      inputRefBrand.current[i] = element as HTMLInputElement;
-                    }}
-                    type="checkbox"
-                    id={e}
-                    name={e}
-                    onChange={(evt) => setBrand(evt.target.checked, e)}
-                  />
-                  <label htmlFor={e}>
-                    {e.length >= 20 ? e.slice(0, 20) + " ..." : e}
-                  </label>
-                </div>
+                <InputChecked
+                  // inputRef={inputRefManufacturer.current[i]}
+                  key={e}
+                  name={e}
+                  setFilter={setBrand}
+                  resetRef={resetRef}
+                />
               ))}
             <label
               onClick={() => setRollingBrand(!rollingBrand)}

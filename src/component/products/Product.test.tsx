@@ -29,13 +29,25 @@ describe("PRODUCT TEST", () => {
       </MemoryRouter>
     );
     expect(screen.getByTestId("size_type")).toHaveTextContent("300 г");
+
     expect(screen.getByTestId("barcode")).toHaveTextContent(
       "Штрихкод: 100013239401"
     );
+
     expect(screen.getByTestId("manufacturer")).toHaveTextContent(
       "Производитель: Cotton Club"
     );
+    expect(screen.getByTestId("brand")).toHaveTextContent("Солнце и Луна");
+    
+    expect(screen.getByTestId("price")).toHaveTextContent('175');
+
     expect(screen.getByTestId("in-basket")).toBeInTheDocument();
+
+    expect(screen.getByTestId("product-img")).toHaveAttribute(
+      "src",
+      "https://avatars.mds.yandex.net/get-mpic/3923571/img_id4769885840219787083.png/orig"
+    );
+
   });
   test("has correct welcome", () => {
     render(

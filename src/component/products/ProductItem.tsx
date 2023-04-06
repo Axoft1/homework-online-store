@@ -23,12 +23,12 @@ const ProductItem: FC<IProduct> = (product) => {
     } else {
       setButtonDisabled!(false);
     }
-  }, [basket]);
+  }, [barcode, basket]);
 
   return (
     <article className="product__cart" data-testid="product-cart">
       <div className="product__cart_img">
-        <img src={url} alt="" />
+        <img src={url} alt={name} data-testid="product-img" />
       </div>
       <div className="product__cart_body">
         <p data-testid="size_type" className="product__cart_body-type">
@@ -54,11 +54,13 @@ const ProductItem: FC<IProduct> = (product) => {
         <p data-testid="manufacturer">
           Производитель: <b style={{ color: "#111111" }}>{manufacturer}</b>
         </p>
-        <p>
+        <p data-testid="brand">
           Бренд: <b style={{ color: "#111111" }}>{brand}</b>
         </p>
         <div className="product__cart_btn">
-          <p className="product__cart_btn-price">{price} &#8376;</p>
+          <p className="product__cart_btn-price" data-testid="price">
+            {price} &#8376;
+          </p>
           <Button
             data-testid="in-basket"
             type="button"

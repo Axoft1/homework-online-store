@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import CategoriesButtons from "../../component/categoriesButtons/CategoriesButtons";
 import DropDownList from "../../component/dropDownList/DropDownList";
 import FilterList from "../../component/filterList/FilterList";
@@ -18,23 +18,23 @@ const Catalog: FC = () => {
     switch (value) {
       case "price01":
         let price01 = filteredCatalog.sort((a, b) => a.price - b.price);
-        setCatalog!(price01);
+        setCatalog && setCatalog(price01);
         break;
       case "price10":
         let price10 = filteredCatalog.sort((a, b) => b.price - a.price);
-        setCatalog!(price10);
+        setCatalog && setCatalog(price10);
         break;
       case "nameAZ":
         let nameAZ = filteredCatalog.sort((a, b) =>
           a.name.localeCompare(b.name)
         );
-        setCatalog!(nameAZ);
+        setCatalog && setCatalog(nameAZ);
         break;
       case "nameZA":
         let nameZA = filteredCatalog.sort((a, b) =>
           b.name.localeCompare(a.name)
         );
-        setCatalog!(nameZA);
+        setCatalog && setCatalog(nameZA);
         break;
     }
   };
@@ -75,25 +75,33 @@ const Catalog: FC = () => {
     catalog: ICatalog[],
     filter: IFilterForm
   ): ICatalog[] => {
-    return catalog ? catalog
-      .filter(
-        (item) => item.price >= filter.priceMin && item.price <= filter.priceMax
-      )
-      .filter((item) =>
-        filter.manufacturers.length === 0
-          ? true
-          : filter.manufacturers.includes(item.manufacturer)
-      )
-      .filter((item) =>
-        filter.brands.length === 0 ? true : filter.brands.includes(item.brand)
-      ): [];
+    return catalog
+      ? catalog
+          .filter(
+            (item) =>
+              item.price >= filter.priceMin && item.price <= filter.priceMax
+          )
+          .filter((item) =>
+            filter.manufacturers.length === 0
+              ? true
+              : filter.manufacturers.includes(item.manufacturer)
+          )
+          .filter((item) =>
+            filter.brands.length === 0
+              ? true
+              : filter.brands.includes(item.brand)
+          )
+      : [];
   };
 
-  const filteredCatalog1 = catalog?.filter((item) =>
+  const filteredCatalogType = catalog?.filter((item) =>
     hasCategory(item, filterForm.category)
   );
 
-  const filteredCatalog = filterCatalog(filteredCatalog1!, applyedFilter);
+  const filteredCatalog = filterCatalog(
+    filteredCatalogType ? filteredCatalogType : [],
+    applyedFilter
+  );
 
   return (
     <div className="catalog conteiner" data-testid="catalog-page">
@@ -107,7 +115,10 @@ const Catalog: FC = () => {
         <div className="catalog__buttonsFilter-param">
           <h3>Подбор по параметрам</h3>
           <Button
-            onClick={() => setButtonMobileFilter!(!buttonMobileFilter)}
+            onClick={() =>
+              setButtonMobileFilter &&
+              setButtonMobileFilter(!buttonMobileFilter)
+            }
             size="img"
             img={buttonMobileFilter ? imgs.cursorUpIcon : imgs.cursorDownIcon}
           ></Button>
@@ -128,7 +139,7 @@ const Catalog: FC = () => {
           setApplyedFilter={setApplyedFilter}
           applyFilter={() => setApplyedFilter(filterForm)}
         />
-        <Products  catalog={filteredCatalog} />
+        <Products catalog={filteredCatalog} />
       </div>
     </div>
   );

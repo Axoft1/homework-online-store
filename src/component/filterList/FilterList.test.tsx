@@ -1,23 +1,29 @@
-import {fireEvent, render, screen} from '@testing-library/react'
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import FilterList from "./FilterList";
 
-import { MemoryRouter } from 'react-router-dom';
-import App from '../../App';
-import Header from '../header/Header';
-import userEvent from '@testing-library/user-event';
-import Catalog from '../../pages/catalog/Catalog';
-import FilterList from './FilterList';
-
-
-test("filter list", async () => {
-  render(
-    <MemoryRouter>
-      <FilterList  brand={["ARAVIA"]} />
-    </MemoryRouter>
-  );
-  const user = userEvent
-  const input = screen.getByText('ARAVIA');
-   user.click(input);
-  // expect(Promise.resolve(input)).toBeInTheDocument();
-  expect(screen.getByLabelText("ARAVIA")).toBeChecked();
-  //  expect(screen.getByTestId("check")).toBeInTheDocument();
+describe("FILTER LIST TEST", () => {
+  test("filter brand", async () => {
+    render(
+      <MemoryRouter>
+        <FilterList brand={["ARAVIA"]} />
+      </MemoryRouter>
+    );
+    const user = userEvent;
+    const input = screen.getByText("ARAVIA");
+    user.click(input);
+    expect(screen.getByLabelText("ARAVIA")).toBeChecked();
+  });
+  test("filter manufacturer", async () => {
+    render(
+      <MemoryRouter>
+        <FilterList manufacturer={["ARAVIA"]} />
+      </MemoryRouter>
+    );
+    const user = userEvent;
+    const input = screen.getByText("ARAVIA");
+    user.click(input);
+    expect(screen.getByLabelText("ARAVIA")).toBeChecked();
+  });
 });
