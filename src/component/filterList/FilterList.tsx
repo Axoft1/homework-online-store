@@ -35,13 +35,13 @@ const FilterList: FC<filterProps> = ({
     useContext<AContext>(CustomContext);
 
   if (!rollingBrand) {
-    brand = brand && brand.filter((e, i) => i < 4);
+    brand = brand && brand.filter((e, i): boolean => i < 4);
   }
   if (!rollingManufacturer) {
-    manufacturer = manufacturer && manufacturer.filter((e, i) => i < 4);
+    manufacturer = manufacturer && manufacturer.filter((e, i): boolean => i < 4);
   }
 
-  const setMinPrice = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const setMinPrice = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = evt.target;
     setFilterForm &&
       setFilterForm((prevState) => ({
@@ -50,7 +50,7 @@ const FilterList: FC<filterProps> = ({
       }));
   };
 
-  const setReset = () => {
+  const setReset = (): void => {
     setResetRef(!resetRef);
     setFilterForm &&
       setFilterForm((prevState: IFilterForm) => ({
@@ -67,7 +67,7 @@ const FilterList: FC<filterProps> = ({
       }));
   };
 
-  const setMaxPrice = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const setMaxPrice = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = evt.target;
     setFilterForm &&
       setFilterForm((prevState) => ({
@@ -76,7 +76,7 @@ const FilterList: FC<filterProps> = ({
       }));
   };
 
-  const setManufacturer = (evt: boolean, name: string) => {
+  const setManufacturer = (evt: boolean, name: string): void => {
     if (evt) {
       setFilterForm &&
         setFilterForm((prevState: IFilterForm) => ({
@@ -88,12 +88,12 @@ const FilterList: FC<filterProps> = ({
         setFilterForm((prevState: IFilterForm) => ({
           ...prevState,
           manufacturers: prevState.manufacturers.filter(
-            (m: string) => m !== name
+            (m: string): boolean => m !== name
           ),
         }));
     }
   };
-  const setBrand = (evt: boolean, name: string) => {
+  const setBrand = (evt: boolean, name: string): void => {
     if (evt) {
       setFilterForm &&
         setFilterForm((prevState: IFilterForm) => ({
@@ -104,12 +104,12 @@ const FilterList: FC<filterProps> = ({
       setFilterForm &&
         setFilterForm((prevState: IFilterForm) => ({
           ...prevState,
-          brands: prevState.brands.filter((m: string) => m !== name),
+          brands: prevState.brands.filter((m: string): boolean => m !== name),
         }));
     }
   };
 
-  const setCategory = (value: string) => {
+  const setCategory = (value: string): void => {
     setFilterForm &&
       setFilterForm((prevState: IFilterForm) => ({
         ...prevState,
@@ -117,14 +117,14 @@ const FilterList: FC<filterProps> = ({
       }));
   };
 
-  const setSearchBrand = (e: React.MouseEvent<HTMLDivElement>) => {
+  const setSearchBrand = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
     if (brand && brand.includes(valueBrand)) {
       setBrand(true, valueBrand);
       applyFilter!();
     }
   };
-  const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>) => {
+  const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
     if (manufacturer && manufacturer.includes(valueManufacturer)) {
       setManufacturer(true, valueManufacturer);
@@ -177,7 +177,7 @@ const FilterList: FC<filterProps> = ({
                 />
               ))}
             <label
-              onClick={() => setRollingManufacturer(!rollingManufacturer)}
+              onClick={(): void => setRollingManufacturer(!rollingManufacturer)}
               className="filterList__form__manufacturer_rolling"
             >
               <p>Показать все</p>
@@ -212,7 +212,7 @@ const FilterList: FC<filterProps> = ({
                 />
               ))}
             <label
-              onClick={() => setRollingBrand(!rollingBrand)}
+              onClick={(): void => setRollingBrand(!rollingBrand)}
               className="filterList__form__manufacturer_rolling"
             >
               <p> Показать все</p>
@@ -226,7 +226,7 @@ const FilterList: FC<filterProps> = ({
         </div>
         <div
           className="filterList__form__btns"
-          onClick={() => setButtonMobileFilter!(!buttonMobileFilter)}
+          onClick={(): void => setButtonMobileFilter!(!buttonMobileFilter)}
         >
           <Button size={"b"} onClick={applyFilter}>
             Показать
@@ -240,7 +240,7 @@ const FilterList: FC<filterProps> = ({
             <div className="filterList__item-ul" key={i}>
               <i
                 className="filterList__item-li"
-                onClick={() => setCategory(e.value[0])}
+                onClick={(): void => setCategory(e.value[0])}
               >
                 {e.label}
               </i>

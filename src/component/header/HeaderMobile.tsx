@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { FC } from "react";
 import { Button } from "../Button/Button";
 import * as img from "../../img/imges";

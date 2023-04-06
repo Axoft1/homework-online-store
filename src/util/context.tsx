@@ -8,11 +8,13 @@ export interface AContext {
   deletCatalogAdmin?: (id: number) => void;
   addBasket?: (product: ICatalog) => void;
   appendedBasket?: (id: number) => void;
+  setAdminPanel?: (t: boolean) => void;
   removeBasket?: (id: number) => void;
   deletBasket?: (id: number) => void;
+  // eslint-disable-next-line no-empty-pattern
   setCatalog?: ([]) => void;
+  // eslint-disable-next-line no-empty-pattern
   setBasket?: ([]) => void;
-  setAdminPanel?: (t: boolean) => void;
   buttonMobileFilter?: boolean;
   catalogAdmin?: ICatalog[];
   sumProducts?: number;
@@ -37,29 +39,31 @@ export const Context = (props: ContextProps) => {
 
   const [adminPanel, setAdminPanel] = useState<boolean>(false);
 
-  const addCatalogAdmin = (product: ICatalog) => {
+  const addCatalogAdmin = (product: ICatalog): void => {
     let check = catalogAdmin.findIndex(
-      (item) => item.barcode === product.barcode
+      (item): boolean => item.barcode === product.barcode
     );
     if (check >= 0) {
       alert("Тавар с таким штрихкодом есть в каталоге");
       return;
     }
-    setCatalogAdmin((basket): ICatalog[] => [
-      ...basket,
-      { ...product, count: 1, id: Math.floor(Math.random() * 1000) },
-    ]);
-  };
-  const deletCatalogAdmin = (id: number) => {
-    setCatalogAdmin((prev) => prev.filter((item) => item.id !== id));
+    setCatalogAdmin((products): ICatalog[] => [...products, { ...product }]);
   };
 
-  const addBasket = (product: ICatalog) => {
-    let check = basket.findIndex((item) => item.barcode === product.barcode);
+  const deletCatalogAdmin = (id: number): void => {
+    setCatalogAdmin((prev): ICatalog[] =>
+      prev.filter((item): boolean => item.id !== id)
+    );
+  };
+
+  const addBasket = (product: ICatalog): void => {
+    let check = basket.findIndex(
+      (item): boolean => item.barcode === product.barcode
+    );
 
     if (check >= 0) {
-      setBasket((prev) =>
-        prev.map((item) => {
+      setBasket((prev): ICatalog[] =>
+        prev.map((item): ICatalog => {
           if (item.barcode === product.barcode) {
             return { ...item, count: item.count! + 1 };
           }
@@ -71,9 +75,9 @@ export const Context = (props: ContextProps) => {
     setBasket((basket): ICatalog[] => [...basket, { ...product, count: 1 }]);
   };
 
-  const appendedBasket = (id: number) => {
-    setBasket((prev) =>
-      prev.map((item) => {
+  const appendedBasket = (id: number): void => {
+    setBasket((prev): ICatalog[] =>
+      prev.map((item): ICatalog => {
         if (item.id === id) {
           return { ...item, count: item.count! + 1 };
         }
@@ -82,13 +86,15 @@ export const Context = (props: ContextProps) => {
     );
   };
 
-  const removeBasket = (id: number) => {
-    let check = basket.find((item) => item.id === id);
+  const removeBasket = (id: number): void => {
+    let check = basket.find((item): boolean => item.id === id);
     if (check?.count === 1) {
-      setBasket((prev) => prev.filter((item) => item.id !== id));
+      setBasket((prev): ICatalog[] =>
+        prev.filter((item): boolean => item.id !== id)
+      );
     } else {
-      setBasket((prev) =>
-        prev.map((item) => {
+      setBasket((prev): ICatalog[] =>
+        prev.map((item): ICatalog => {
           if (item.id === id) {
             return { ...item, count: item.count! - 1 };
           }
@@ -97,11 +103,11 @@ export const Context = (props: ContextProps) => {
       );
     }
   };
-  const deletBasket = (id: number) => {
-    setBasket((prev) => prev.filter((item) => item.id !== id));
+  const deletBasket = (id: number): void => {
+    setBasket((prev): ICatalog[] => prev.filter((item) => item.id !== id));
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     if (localStorage.getItem("catalogAdmin")?.length! > 10) {
       setCatalog(JSON.parse(localStorage.getItem("catalogAdmin")!));
       setLoading(false);
@@ -112,7 +118,7 @@ export const Context = (props: ContextProps) => {
     }
   }, [adminPanel]);
 
-  useEffect(() => {
+  useEffect((): void => {
     if (typeof localStorage.getItem("basket")) {
       setBasket(JSON.parse(localStorage.getItem("basket")!));
     }
@@ -121,22 +127,23 @@ export const Context = (props: ContextProps) => {
     }
   }, []);
 
-  useEffect(() => {
+  useEffect((): void => {
     if (basket) {
       localStorage.setItem("basket", JSON.stringify(basket));
     }
   }, [basket]);
 
-  useEffect(() => {
+  useEffect((): void => {
     if (catalogAdmin) {
       localStorage.setItem("catalogAdmin", JSON.stringify(catalogAdmin));
     }
   }, [catalogAdmin]);
 
-  useEffect(() => {
+  useEffect((): void => {
     setSumProducts(
       basket.reduce(
-        (accum: any, item: any): any => accum + item.count * item.price,
+        (accum: number, item: ICatalog): number =>
+          accum + item.price * item.count,
         0
       )
     );

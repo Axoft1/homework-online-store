@@ -14,24 +14,24 @@ const Catalog: FC = () => {
   const { catalog, buttonMobileFilter, setCatalog, setButtonMobileFilter } =
     useContext<AContext>(CustomContext);
 
-  const catalogSort = (value: string) => {
+  const catalogSort = (value: string): void => {
     switch (value) {
       case "price01":
-        let price01 = filteredCatalog.sort((a, b) => a.price - b.price);
+        let price01 = filteredCatalog.sort((a, b): number => a.price - b.price);
         setCatalog && setCatalog(price01);
         break;
       case "price10":
-        let price10 = filteredCatalog.sort((a, b) => b.price - a.price);
+        let price10 = filteredCatalog.sort((a, b): number => b.price - a.price);
         setCatalog && setCatalog(price10);
         break;
       case "nameAZ":
-        let nameAZ = filteredCatalog.sort((a, b) =>
+        let nameAZ = filteredCatalog.sort((a, b): number =>
           a.name.localeCompare(b.name)
         );
         setCatalog && setCatalog(nameAZ);
         break;
       case "nameZA":
-        let nameZA = filteredCatalog.sort((a, b) =>
+        let nameZA = filteredCatalog.sort((a, b): number =>
           b.name.localeCompare(a.name)
         );
         setCatalog && setCatalog(nameZA);
@@ -55,16 +55,16 @@ const Catalog: FC = () => {
     category: "",
   });
 
-  const brand = Array.from(new Set(catalog?.map((e: any) => e.brand)));
+  const brand = Array.from(new Set(catalog?.map((e: ICatalog): string => e.brand)));
   const manufacturer = Array.from(
-    new Set(catalog?.map((e: any) => e.manufacturer))
+    new Set(catalog?.map((e: ICatalog):string => e.manufacturer))
   );
 
-  const formSubmit = (e: React.FormEvent) => {
+  const formSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
   };
 
-  const hasCategory = (item: ICatalog, category: string) => {
+  const hasCategory = (item: ICatalog, category: string): boolean => {
     if (category === "") {
       return true;
     }
@@ -78,15 +78,15 @@ const Catalog: FC = () => {
     return catalog
       ? catalog
           .filter(
-            (item) =>
+            (item): boolean =>
               item.price >= filter.priceMin && item.price <= filter.priceMax
           )
-          .filter((item) =>
+          .filter((item): boolean =>
             filter.manufacturers.length === 0
               ? true
               : filter.manufacturers.includes(item.manufacturer)
           )
-          .filter((item) =>
+          .filter((item): boolean =>
             filter.brands.length === 0
               ? true
               : filter.brands.includes(item.brand)
@@ -94,7 +94,7 @@ const Catalog: FC = () => {
       : [];
   };
 
-  const filteredCatalogType = catalog?.filter((item) =>
+  const filteredCatalogType = catalog?.filter((item): boolean =>
     hasCategory(item, filterForm.category)
   );
 
@@ -115,7 +115,7 @@ const Catalog: FC = () => {
         <div className="catalog__buttonsFilter-param">
           <h3>Подбор по параметрам</h3>
           <Button
-            onClick={() =>
+            onClick={(): void =>
               setButtonMobileFilter &&
               setButtonMobileFilter(!buttonMobileFilter)
             }
@@ -137,7 +137,7 @@ const Catalog: FC = () => {
           filterForm={filterForm}
           setFilterForm={setFilterForm}
           setApplyedFilter={setApplyedFilter}
-          applyFilter={() => setApplyedFilter(filterForm)}
+          applyFilter={(): void => setApplyedFilter(filterForm)}
         />
         <Products catalog={filteredCatalog} />
       </div>

@@ -5,6 +5,7 @@ import { categories } from "../categoriesButtons/index";
 import { ICatalog } from "../../models/ICatalog";
 import * as img from "../../img/imges";
 import Select from "react-select";
+import { IDataForm, convertIntObj } from ".";
 import "./style.scss";
 
 interface BasketEmptyProps {
@@ -21,14 +22,15 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ICatalog>({ mode: "onChange" });
+  } = useForm<IDataForm>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<ICatalog> = (data) => {
-    const newCatalog = convertIntObj(data);
-    addCatalogAdmin!(newCatalog);
+  const onSubmit: SubmitHandler<IDataForm> = (data): void => {
+    
+    const newCatalog:ICatalog = convertIntObj(data);
+    addCatalogAdmin && addCatalogAdmin(newCatalog);
   };
 
-  const set = () => {
+  const set = (): void => {
     setShow(false);
     if (localStorage.getItem("catalogAdmin")?.length! > 3) {
       setAdminPanel!(true);
@@ -36,21 +38,6 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
       setAdminPanel!(false);
     }
   };
-
-  function convertIntObj(obj: any) {
-    const res: any = {};
-    for (const key in obj) {
-      if (key === "id") {
-        res[key] = Number(obj[key]);
-      } else if (key === "price") {
-        res[key] = Number(obj[key]);
-      } else {
-        res[key] = obj[key];
-        res["count"] = 1;
-      }
-    }
-    return res;
-  }
 
   return (
     <div
@@ -60,10 +47,13 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
     >
       <div className="adminPanel__block">
         <h3 className="basketEmpty__title">Админка</h3>
-        <div onClick={() => set()} className="basketEmpty__close">
+        <div onClick={(): void => set()} className="basketEmpty__close">
           <img src={img.closeOutlineIcon} alt="X" />
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="formAdminPanel">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="formAdminPanel"
+        >
           {errors.url && <span>Заполните правильно url товара</span>}
           {errors.name && <span>Напишите имя товара</span>}
           {errors.barcode && <span>Только цифры</span>}
@@ -91,9 +81,9 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
                   defaultValue={categories[0]}
                   ref={ref}
                   className="react-select"
-                  onChange={(val) => onChange(val.map((c) => c.value))}
+                  onChange={(val): void => onChange(val.map((c): string[] => c.value))}
                   isSearchable={false}
-                  value={categories.find((c) => c.value === value)}
+                  value={categories.find((c): boolean => c.value === value)}
                   isMulti
                   options={categories}
                 />
@@ -183,7 +173,7 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
             ? catalogAdmin.map((e) => (
                 <li key={e.id} data-testid="added-product">
                   {e.name}
-                  <button onClick={() => deletCatalogAdmin!(e.id)}>
+                  <button onClick={(): void => deletCatalogAdmin!(e.id)}>
                     Удалить
                   </button>
                 </li>

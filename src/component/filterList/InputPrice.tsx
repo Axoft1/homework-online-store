@@ -26,7 +26,7 @@ const InputPrice: FC<InputPriceProps> = ({
   return (
     <>
       <input
-        ref={(element) => {
+        ref={(element): void => {
           inputRef.current[0] = element as HTMLInputElement;
         }}
         type="number"

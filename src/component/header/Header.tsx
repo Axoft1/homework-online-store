@@ -25,7 +25,7 @@ const Header: FC = () => {
   let lastScrol = 0;
   const defaultOffset = 100;
 
-  const handleScroll = () => {
+  const handleScroll = (): void => {
     if (window.scrollY > lastScrol && !hide && window.scrollY > defaultOffset) {
       setHide(true);
     } else if (window.scrollY < lastScrol) {
@@ -34,12 +34,12 @@ const Header: FC = () => {
     lastScrol = window.scrollY;
   };
 
-  useEffect(() => {
+  useEffect((): ()=> void => {
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return (): void => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>) => {
+  const setSearchManufacturer = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
     console.log("Search");
   };
@@ -49,7 +49,7 @@ const Header: FC = () => {
       <div className="header conteiner">
         <div
           className="header__burger"
-          onClick={() => setBurgerButton(!burgerButton)}
+          onClick={(): void => setBurgerButton(!burgerButton)}
         >
           <Button size="img" img={burgerButton ? img.menuX : img.menuAlt} />
         </div>
@@ -71,7 +71,7 @@ const Header: FC = () => {
         </div>
         <nav className="header__nav">
           <ul className="header__nav_ul">
-            <li data-testid="li-admin" onClick={() => setShowAdminPanel(true)}>
+            <li data-testid="li-admin" onClick={(): void => setShowAdminPanel(true)}>
               <a href="#*">Админ панель</a>
             </li>
             <li>

@@ -17,8 +17,8 @@ const ProductItem: FC<IProduct> = (product) => {
   const { addBasket, basket } = useContext<AContext>(CustomContext);
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (basket?.find((item) => item.barcode === barcode)) {
+  useEffect((): void => {
+    if (basket?.find((item): boolean => item.barcode === barcode)) {
       setButtonDisabled!(true);
     } else {
       setButtonDisabled!(false);
@@ -66,7 +66,7 @@ const ProductItem: FC<IProduct> = (product) => {
             type="button"
             disabled={buttonDisabled}
             color={buttonDisabled ? "disabled" : "included"}
-            onClick={() => addBasket!(product.product)}
+            onClick={(): void => addBasket!(product.product)}
             size="sm"
             img={img.simpleBasketIcon}
           >

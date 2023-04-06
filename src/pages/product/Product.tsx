@@ -25,8 +25,8 @@ const Product:FC = () => {
     barcode,
   }: ICatalog = state || {};
 
-  useEffect(() => {
-    let t = basket?.find((item) => item.barcode === barcode);
+  useEffect((): void => {
+    let t = basket?.find((item): boolean => item.barcode === barcode);
     if (t) {
       setCountProduct(t.count!);
 
@@ -34,12 +34,12 @@ const Product:FC = () => {
     } else {
       setButtonDisabled!(false);
     }
-  }, [basket]);
+  }, [barcode, basket]);
 
   const pathNameSplit = pathname
     .split("/")
-    .filter((x) => x)
-    .filter((x) => x !== "catalog");
+    .filter((x): string => x)
+    .filter((x): boolean => x !== "catalog");
 
   const product = catalog?.find((item) => item.barcode === pathNameSplit[0]);
 
@@ -74,7 +74,7 @@ const Product:FC = () => {
             </button>
             <p className="basketItem__count">{countProduct}</p>
             <button
-              onClick={() => appendedBasket!(id)}
+              onClick={(): void => appendedBasket!(id)}
               className="basketItem__btn"
             >
               +
@@ -85,7 +85,7 @@ const Product:FC = () => {
               type="button"
               disabled={buttonDisabled}
               color={buttonDisabled ? "disabled" : "included"}
-              onClick={() => addBasket!(product!)}
+              onClick={(): void => addBasket!(product!)}
               size="sm"
               img={imgs.simpleBasketIcon}
             >
@@ -103,7 +103,7 @@ const Product:FC = () => {
                 type="button"
                 disabled={buttonDisabled}
                 color={buttonDisabled ? "disabled" : "included"}
-                onClick={() => addBasket!(product!)}
+                onClick={(): void => addBasket!(product!)}
                 size="sm"
                 img={imgs.simpleBasketIcon}
               >
@@ -136,7 +136,7 @@ const Product:FC = () => {
           <div className="productItem__body__description-header">
             <p
               className="productItem__body__description-btn"
-              onClick={() => {
+              onClick={(): void => {
                 setShowDescription(!showDescription);
               }}
             >
@@ -164,7 +164,7 @@ const Product:FC = () => {
           <div className="productItem__body__specifications-header">
             <p
               className="productItem__body__specifications-btn"
-              onClick={() => {
+              onClick={(): void => {
                 setShowSpecifications(!showSpecifications);
               }}
             >

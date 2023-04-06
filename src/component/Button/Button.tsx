@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import { ButtonProps } from "./Button.props";
 import styles from "./Button.module.scss";

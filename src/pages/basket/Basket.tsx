@@ -11,7 +11,7 @@ const Basket: FC = () => {
     useContext<AContext>(CustomContext);
   const [show, setShow] = useState<boolean>(false);
 
-  const del = () => {
+  const del = (): void => {
     setShow(true);
     setBasket!([]);
   };
@@ -28,7 +28,7 @@ const Basket: FC = () => {
           : "нет товаров"}
         {basket!.length ? (
           <div className="basketList__order">
-            <Button onClick={() => del()} size="b">
+            <Button onClick={(): void => del()} size="b">
               Оформить заказ
             </Button>
             <div className="basketList__price">{sumProducts} &#8376;</div>

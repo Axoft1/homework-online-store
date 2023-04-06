@@ -9,25 +9,25 @@ interface BasketEmptyProps {
 }
 
 const OrderNotification: FC<BasketEmptyProps> = ({ show, setShow }) => {
-  const exitBasket = (e: React.MouseEvent<HTMLDivElement>) => {
+  const exitBasket = (e: React.MouseEvent<HTMLDivElement>): void => {
     if ((e.target as Element).classList.contains("basketEmpty")) {
       setShow(false);
     }
   };
   return (
     <div
-      onClick={(e) => exitBasket(e)}
+      onClick={(e): void => exitBasket(e)}
       style={{ display: show ? "flex" : "none" }}
       className="basketEmpty"
     >
       <div className="basketEmpty__block">
-        <div onClick={() => setShow(false)}>
+        <div onClick={(): void => setShow(false)}>
           <Button size="img" img={img.doubleCheckIcon}></Button>
         </div>
         <img src="double-check" alt="" />
         <h3 className="basketEmpty__title">Спасибо за заказ</h3>
         <p>Наш менеджер свяжется с вами в ближайшее время</p>
-        <span className="basketEmpty__close" onClick={() => setShow(false)}>
+        <span className="basketEmpty__close" onClick={(): void => setShow(false)}>
           <img src={img.closeOutlineIcon} alt="" />
         </span>
       </div>

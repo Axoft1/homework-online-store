@@ -18,10 +18,10 @@ export const Search: FC<filterProps> = ({
   placeholder,
 }): JSX.Element => {
   return (
-    <form onSubmit={(e) => formSubmit(e)} className="search">
+    <form onSubmit={(e): void => formSubmit(e)} className="search">
       <input
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e): void => setValue(e.target.value)}
         type="text"
         placeholder={placeholder}
       />

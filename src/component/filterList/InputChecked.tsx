@@ -26,7 +26,7 @@ const InputChecked: FC<InputCheckedProps> = ({ name, setFilter, resetRef }) => {
         }}
         type="checkbox"
         name={name}
-        onChange={(evt) => setFilter(evt.target.checked, name)}
+        onChange={(evt): void => setFilter(evt.target.checked, name)}
       />
       <label htmlFor={name}>
         {name.length >= 20 ? name.slice(0, 20) + " ..." : name}

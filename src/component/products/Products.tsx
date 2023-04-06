@@ -21,14 +21,14 @@ const Products: FC<CatalogProps> = ({ catalog }: CatalogProps) => {
     setCurrentPage(pageNumber);
   };
 
-  const nextPage = () => {
+  const nextPage = (): void => {
     if (currentPage >= Math.ceil(catalog.length / productPerPage)) {
       setCurrentPage(1);
       return;
     }
     setCurrentPage(currentPage + 1);
   };
-  const prevPage = () => {
+  const prevPage = (): void => {
     if (currentPage < Math.ceil(catalog.length / productPerPage) - 1) {
       setCurrentPage(Math.ceil(catalog.length / productPerPage));
       return;

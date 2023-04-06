@@ -8,7 +8,7 @@ interface CategoriesButtonsProps {
 }
 
 const CategoriesButtons: FC<CategoriesButtonsProps> = ({ setFilterForm }) => {
-  const setCategory = (value: string) => {
+  const setCategory = (value: string): void => {
     setFilterForm((prevState: IFilterForm) => ({
       ...prevState,
       category: value,
@@ -19,7 +19,7 @@ const CategoriesButtons: FC<CategoriesButtonsProps> = ({ setFilterForm }) => {
     <>
       {categories.map((e) => (
         <ButtonCategories
-          onClick={() => setCategory(e.value[0])}
+          onClick={(): void => setCategory(e.value[0])}
           key={e.value[0]}
         >
           {e.label}

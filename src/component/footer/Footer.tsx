@@ -8,7 +8,7 @@ import * as img from "../../img/imges";
 const Footer: FC = () => {
   const [valueSearch, setValueSearch] = useState("");
 
-  const setSearch = (e: React.MouseEvent<HTMLDivElement>) => {
+  const setSearch = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
     console.log("Search");
   };

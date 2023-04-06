@@ -21,7 +21,7 @@ const Pagination: FC<PagitationProps> = ({
   return (
     <>
       <ul className={styles.pagination}>
-        <button className={styles.pagination__btn} onClick={() => prevPage()}>
+        <button className={styles.pagination__btn} onClick={(): void => prevPage()}>
           <img src={img.leftIcon} alt="" />
         </button>
         {pageNumber.map((number, i) => (
@@ -34,7 +34,7 @@ const Pagination: FC<PagitationProps> = ({
             {number}
           </PaginationItem>
         ))}
-        <button className={styles.pagination__btn} onClick={() => nextPage()}>
+        <button className={styles.pagination__btn} onClick={(): void => nextPage()}>
           <img src={img.rigthIcon} alt="" />
         </button>
       </ul>

@@ -49,9 +49,6 @@ const BasketItem: FC<BasketItemProps> = (props) => {
             <b>{brand} </b>{" "}
             {name.length >= 50 ? name.slice(0, 50) + " ..." : name}
           </Link>
-
-          {/* <p className="basketItem__body-name">{name.slice(0, 35)} ...</p> */}
-
           <p className="basketItem__body-description">
             {description.slice(0, 150)} ...
           </p>
@@ -60,14 +57,14 @@ const BasketItem: FC<BasketItemProps> = (props) => {
         <div className="basketItem__price-btn-delet">
           <div className="basketItem__btns">
             <button
-              onClick={() => removeBasket!(id)}
+              onClick={(): void => removeBasket!(id)}
               className="basketItem__btn"
             >
               -
             </button>
             <p className="basketItem__count">{count}</p>
             <button
-              onClick={() => appendedBasket!(id)}
+              onClick={(): void => appendedBasket!(id)}
               className="basketItem__btn"
             >
               +
@@ -85,7 +82,7 @@ const BasketItem: FC<BasketItemProps> = (props) => {
 
           <div className="basketItem__btn-delet">
             <Button
-              onClick={() => deletBasket!(id)}
+              onClick={(): void => deletBasket!(id)}
               size={"img"}
               img={img.deleteIcon}
             ></Button>

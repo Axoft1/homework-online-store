@@ -1,16 +1,16 @@
-export enum typeOfCare {
-  body = "body",
-  hands = "hands",
-  legs = "legs",
-  face = "face",
-  paper = "paper",
-  hygiene = "hygiene",
-  tanning = "tanning",
-  set = "set",
-  hair = "hair",
-  mouth = "mouth",
-  shaving = "shaving",
-}
+// export enum typeOfCare {
+//   body = "body",
+//   hands = "hands",
+//   legs = "legs",
+//   face = "face",
+//   paper = "paper",
+//   hygiene = "hygiene",
+//   tanning = "tanning",
+//   set = "set",
+//   hair = "hair",
+//   mouth = "mouth",
+//   shaving = "shaving",
+// }
 export type CareCategories =
   | "body"
   | "hands"
@@ -35,6 +35,6 @@ export interface ICatalog {
   brand: string;
   description: string;
   price: number;
-  count?: number;
+  count: number;
   type_of_care: string[];
 }
