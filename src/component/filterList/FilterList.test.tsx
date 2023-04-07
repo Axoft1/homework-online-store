@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import FilterList from "./FilterList";
@@ -25,5 +25,16 @@ describe("FILTER LIST TEST", () => {
     const input = screen.getByText("ARAVIA");
     user.click(input);
     expect(screen.getByLabelText("ARAVIA")).toBeChecked();
+  });
+
+  test("Within Elements", () => {
+    render(
+      <MemoryRouter>
+        <FilterList manufacturer={["ARAVIA"]} />
+      </MemoryRouter>
+    );
+    const messages = screen.getByText("Подбор по параметрам");
+    const helloMessage = within(messages).getByText(/цена/i);
+    expect(helloMessage).toBeInTheDocument();
   });
 });

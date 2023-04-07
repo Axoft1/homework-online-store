@@ -1,6 +1,6 @@
 import { ICatalog } from "../../models/ICatalog";
 
-export function convertIntObj(obj: IDataForm): ICatalog {
+export function convertIntoObj(obj: IDataForm): ICatalog {
   const res: ICatalog = {
     id: 0,
     count: 0,
@@ -36,6 +36,10 @@ export function convertIntObj(obj: IDataForm): ICatalog {
       res[key] = obj[key];
     } else if (key === "url") {
       res[key] = obj[key];
+    } else if (key === "id") {
+      res[key] = obj[key];
+      res["count"] = 1;
+    } else {
       res["count"] = 1;
       res["id"] = Math.floor(Math.random() * 1000);
     }
@@ -44,6 +48,7 @@ export function convertIntObj(obj: IDataForm): ICatalog {
 }
 
 export interface IDataForm {
+  id: number;
   barcode: string;
   brand: string;
   description: string;
@@ -55,17 +60,3 @@ export interface IDataForm {
   type_of_care: string[];
   url: string;
 }
-// interface y {
-//   id: number;
-//   count: number;
-//   barcode: string;
-//   brand: string;
-//   description: string;
-//   manufacturer: string;
-//   name: string;
-//   price: number;
-//   size: string;
-//   size_type: string;
-//   type_of_care: string[];
-//   url: string;
-// }

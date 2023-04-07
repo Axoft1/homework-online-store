@@ -5,7 +5,7 @@ import { categories } from "../categoriesButtons/index";
 import { ICatalog } from "../../models/ICatalog";
 import * as img from "../../img/imges";
 import Select from "react-select";
-import { IDataForm, convertIntObj } from ".";
+import { IDataForm, convertIntoObj } from ".";
 import "./style.scss";
 
 interface BasketEmptyProps {
@@ -26,7 +26,7 @@ const AdminPanel: FC<BasketEmptyProps> = ({ show, setShow }) => {
 
   const onSubmit: SubmitHandler<IDataForm> = (data): void => {
     
-    const newCatalog:ICatalog = convertIntObj(data);
+    const newCatalog: ICatalog = convertIntoObj(data);
     addCatalogAdmin && addCatalogAdmin(newCatalog);
   };
 

@@ -12,3 +12,12 @@ test( "render", (): void=>{
     const element = screen.getAllByRole('button')[0];
     expect(element).toBeInTheDocument()
 })
+test( "Not text", (): void=>{
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    )
+   
+    expect(screen.getAllByRole("button", {name: /каталог/i} )[0]).toBeInTheDocument();
+})

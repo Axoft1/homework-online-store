@@ -54,7 +54,7 @@ const Products: FC<CatalogProps> = ({ catalog }: CatalogProps) => {
       </div>
       <div className="paginations">
         {catalog.length < productPerPage ? (
-          ""
+          <div></div>
         ) : (
           <Pagination
             productPerPage={productPerPage}

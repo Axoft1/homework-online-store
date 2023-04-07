@@ -97,7 +97,7 @@ const Header: FC = () => {
           <div
             data-testid="link-to-basket"
             className="header__basket_icon"
-            onClick={() => {
+            onClick={(): void => {
               basket?.length ? navigate("/basket") : setShowBasket(true);
             }}
           >
