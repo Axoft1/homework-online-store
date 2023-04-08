@@ -21,6 +21,7 @@ const InputChecked: FC<InputCheckedProps> = ({ name, setFilter, resetRef }) => {
   return (
     <div>
       <input
+        id={name}
         ref={(element): void => {
           inputRef.current[0] = element as HTMLInputElement;
         }}

@@ -204,7 +204,6 @@ const FilterList: FC<filterProps> = ({
             {brand &&
               brand.map((e, i) => (
                 <InputChecked
-                  // inputRef={inputRefManufacturer.current[i]}
                   key={e}
                   name={e}
                   setFilter={setBrand}
